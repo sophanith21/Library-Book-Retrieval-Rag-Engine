@@ -11,19 +11,25 @@ datasource db {
 }
 
 model User {
-  id           String @id @default(uuid())
-  email        String @unique
+  id           String   @id @default(uuid())
+  email        String   @unique
   passwordHash String
-  role         String @default("student")
+  role         String   @default("student") // admin or student
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   @@map("users")
   @@schema("auth")
 }
 
 model Book {
-  id      String  @id @default(uuid())
-  title   String
-  fileKey String?
+  id        String   @id @default(uuid())
+  title     String
+  author    String   @default("Unknown")
+  coverUrl  String?
+  fileKey   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("books")
   @@schema("book")
