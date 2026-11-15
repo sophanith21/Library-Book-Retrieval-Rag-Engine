@@ -1,21 +1,22 @@
 services:
   # Edge Gateway: Unified reverse proxy for Client Browser
   # Routes:
-  #   - Static / UI Route (/) -> UI Server (frontend)
-  #   - API Route (/api/)     -> API Gateway
-  #   - Monitoring (/monitoring/) -> Grafana (otel-lgtm)
+  #   - Static / UI Route (/) -> Host Vite Dev Server (host.docker.internal:5173)
+  #   - API Route (/api/)     -> API Gateway container (api-gateway:3000)
+  #   - Monitoring (/monitoring/) -> Grafana container (otel-lgtm:3000)
   edge-gateway:
     image: nginx:alpine
     ports:
       - '80:80'
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
     volumes:
       - ./infra/edge-gateway/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
-      - frontend
       - api-gateway
       - otel-lgtm
 
-  # UI Server (Frontend React SPA)
+  # Optional production frontend container (for dev, run `npm run dev` in frontend/)
   frontend:
     build:
       context: ./frontend
@@ -24,6 +25,8 @@ services:
       - '5173:80'
     environment:
       - VITE_API_BASE_URL=/api
+    profiles:
+      - prod
 
   # API Gateway: HTTP Entrypoint for Backend Microservices
   api-gateway:
@@ -38,7 +41,7 @@ services:
       - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
     volumes:
       - ./backend:/app
-      - /app/node_modules
+      - backend_node_modules:/app/node_modules
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -54,7 +57,7 @@ services:
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/app
     volumes:
       - ./backend:/app
-      - /app/node_modules
+      - backend_node_modules:/app/node_modules
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -77,7 +80,7 @@ services:
       - S3_BUCKET=books
     volumes:
       - ./backend:/app
-      - /app/node_modules
+      - backend_node_modules:/app/node_modules
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -95,7 +98,7 @@ services:
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/app
     volumes:
       - ./backend:/app
-      - /app/node_modules
+      - backend_node_modules:/app/node_modules
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -113,7 +116,7 @@ services:
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/app
     volumes:
       - ./backend:/app
-      - /app/node_modules
+      - backend_node_modules:/app/node_modules
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -131,7 +134,7 @@ services:
       - OLLAMA_HOST=http://host.docker.internal:11434
     volumes:
       - ./backend:/app
-      - /app/node_modules
+      - backend_node_modules:/app/node_modules
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -190,3 +193,4 @@ services:
 volumes:
   pgdata:
   seaweeddata:
+  backend_node_modules:

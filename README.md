@@ -16,7 +16,7 @@ A scalable, microservices-driven digital library and Retrieval-Augmented Generat
                        │      (API Route)      │
                        ▼           ▼           ▼
                   [UI Server] [API Gateway] [Grafana]
-                   (Frontend)    (:3000)   (otel-lgtm)
+             (Vite npm run dev)  (:3000)   (otel-lgtm)
                                    │
        ┌───────────────────────────┴───────────────────────────┐
        │                                                       │
@@ -36,155 +36,159 @@ A scalable, microservices-driven digital library and Retrieval-Augmented Generat
 
 ---
 
-## 🔍 Retrieval & RAG Pipeline Flow
+## 🛠️ Development Workflow
 
-1. **Data Retrieval & Ingestion**:
-   - `crawler.py` & `downloader.py` crawl and download EPUB books from standard repositories.
-   - `ingest.py` parses each book into `title`, `author`, `cover_url`, and `chapters: [{chapter_no, chunk[]}]`.
-   - Stores raw book files and cover thumbnails in **SeaweedFS (S3)** and registers metadata in **PostgreSQL**.
+The project is structured specifically for team development:
+1. **All backend microservices, databases, event broker, monitoring, and the Edge Gateway run in Docker containers**.
+2. **The frontend runs locally on the host using `npm run dev`** to enable instant Hot Module Replacement (HMR), source maps, and browser developer tools (React DevTools, Vite debuggers).
+3. **Frontend API requests route through the Edge Proxy (`:80`) to the containerized backend**.
 
-2. **Sparse Indexing & Retrieval**:
-   - Inverted index using **BM25 / TF-IDF** scoring over chapter chunks.
-   - Output: Sparse ranked chunk list `[(chunk_0, rank=1), (chunk_8, rank=2), ...]`.
-
-3. **Dense Indexing & Retrieval (Vector Embeddings)**:
-   - Encodes text chunks into dense vector embeddings using **`BAAI/bge-small-en-v1.5`** (384 dimensions).
-   - Indexed via **HNSW Graph Index** in PostgreSQL with `pgvector` for fast cosine similarity search.
-   - Output: Dense ranked chunk list `[(chunk_K, rank=1), (chunk_A, rank=2), ...]`.
-
-4. **Reciprocal Rank Fusion (RRF)**:
-   - Merges Sparse and Dense ranked candidate lists using Reciprocal Rank Fusion:
-     $$\text{RRF\_Score}(d) = \sum_{m \in \{\text{sparse}, \text{dense}\}} \frac{1}{k + \text{rank}_m(d)} \quad (k = 60)$$
-
-5. **Dual Output Stream**:
-   - **RAG Overview**: Top 5 fused chunks are fed to the **LLM Service** (local Ollama / LLaMA) to synthesize an academic overview with citations.
-   - **Deduplicated Search Results**: Deduplicated by `book_id` (keeping the highest-ranked chunk snippet per book) to provide clean book search result cards.
+```
+[Browser + React DevTools] 
+         │
+         ├───> http://localhost:5173 (Host Vite Dev Server with HMR)
+         │           │
+         │           └─── [Proxy /api] ───┐
+         │                                ▼
+         └─────────────> [Edge Gateway: Port 80 (Nginx)]
+                                 │
+                                 └───> [api-gateway:3000 (Docker Container)]
+                                              │
+                                              └───> [RabbitMQ Microservices (Docker Containers)]
+```
 
 ---
 
-## 📦 Service Breakdown
+## 🚀 Step-by-Step Local Setup Guide
 
-| Service | Technology | Port | Description |
-| :--- | :--- | :--- | :--- |
-| **`edge-gateway`** | Nginx Reverse Proxy | `80` | Entrypoint routing `/` to Frontend, `/api/` to API Gateway, and `/monitoring/` to Grafana |
-| **`frontend`** | React + Vite + TS | `5173` (internal `80`) | Library Book Retrieval Engine (LBRE) Web UI |
-| **`api-gateway`** | NestJS HTTP Gateway | `3000` | REST API orchestrating inter-service RPC via RabbitMQ |
-| **`auth`** | NestJS Microservice | Internal (RMQ) | Handles registration, login, and JWT/token validation (admin/student) |
-| **`book`** | NestJS Microservice | Internal (RMQ) | Handles book CRUD and object storage interactions with SeaweedFS S3 |
-| **`indexing`** | NestJS Microservice | Internal (RMQ) | Chunks chapters, builds sparse inverted index and generates dense embeddings |
-| **`retrieval`** | NestJS Microservice | Internal (RMQ) | Executes BM25 sparse search + PgVector HNSW dense search + RRF ranking |
-| **`llm`** | NestJS Microservice | Internal (RMQ) | Synthesizes grounded AI overviews using local Ollama / LLaMA models |
-| **`rabbitmq`** | RabbitMQ 3 Management | `5672`, `15672` | Asynchronous message broker and event bus |
-| **`postgres`** | PostgreSQL 17 + PgVector | `5432` | Relational storage for auth/books and vector storage for `knowledge.chunks` |
-| **`seaweedfs`** | SeaweedFS S3 Storage | `8333`, `9333` | S3-compatible object storage for EPUB books and covers |
-| **`otel-lgtm`** | Grafana LGTM Stack | `3001` (UI), `4317/4318` | OpenTelemetry monitoring (Loki, Grafana, Tempo, Mimir) |
+### 1. Prerequisites
+- [Docker](https://docs.docker.com/get-docker/) & [Docker Compose](https://docs.docker.com/compose/)
+- [Node.js](https://nodejs.org/) (v20+ or v22+) & `npm`
+- [Python 3.10+](https://www.python.org/) (optional, for crawlers/ingestion scripts)
 
----
-
-## 🚀 Quickstart with Docker Compose
-
-### Prerequisites
-- Docker & Docker Compose installed.
-
-### 1. Start All Services
+### 2. Environment Configuration
+Copy the template `.env.example` file to `.env`:
 ```bash
-docker compose up --build -d
+cp .env.example .env
+cp .env.example backend/.env
 ```
 
-### 2. Verify Running Services
+### 3. Install Dependencies
+Install dependencies on your host machine for development tooling and IDE autocompletion:
 ```bash
-docker compose ps
+# Install frontend packages
+cd frontend && npm install && cd ..
+
+# Install backend packages
+cd backend && npm install && cd ..
 ```
 
-### 3. Access Endpoints
-- **LBRE Web Interface**: [http://localhost](http://localhost) (via Edge Gateway)
-- **API Gateway**: [http://localhost:3000](http://localhost:3000) or [http://localhost/api/](http://localhost/api/)
-- **RabbitMQ Management Dashboard**: [http://localhost:15672](http://localhost:15672) (User: `guest` / `guest`)
-- **SeaweedFS S3 Interface**: [http://localhost:8333](http://localhost:8333)
-- **Grafana Monitoring Dashboard**: [http://localhost:3001](http://localhost:3001) or [http://localhost/monitoring/](http://localhost/monitoring/) (User: `admin` / `admin`)
-
----
-
-## 💻 Local Development (Without Full Docker)
-
-If you prefer developing individual services locally on your host machine:
-
-### 1. Start Infrastructure Dependencies
+### 4. Start the Containerized Backend & Infrastructure
+From the project root directory, run:
 ```bash
-docker compose up -d postgres rabbitmq seaweedfs
+docker compose up -d
 ```
+This spins up:
+- **`edge-gateway`**: Nginx proxy on `http://localhost:80`
+- **`api-gateway`**: HTTP entrypoint container on port 3000
+- **`auth`**: Authentication microservice container (RabbitMQ)
+- **`book`**: Book microservice container (RabbitMQ + SeaweedFS)
+- **`indexing`**: Indexing microservice container (RabbitMQ + PgVector)
+- **`retrieval`**: Hybrid retrieval microservice container (RabbitMQ + RRF)
+- **`llm`**: LLM synthesis microservice container (RabbitMQ)
+- **`postgres`**: PostgreSQL 17 + PgVector container (`:5432`)
+- **`seaweedfs`**: S3-compatible storage container (`:8333`, `:9333`)
+- **`rabbitmq`**: RabbitMQ message broker container (`:5672`, `:15672`)
+- **`otel-lgtm`**: Grafana OpenTelemetry stack container (`:3001`, `:4317/4318`)
 
-### 2. Run Backend Services
-```bash
-cd backend
+*Note: All backend services run in watch mode (`nest start <app> --watch`). When you edit code in `backend/apps/<your-service>`, the container immediately hot-reloads automatically.*
 
-# Install dependencies (already installed)
-npm install
-
-# Run the API Gateway
-npm run start:dev api-gateway
-
-# In separate terminals, run the microservices
-npm run start:dev book
-npm run start:dev auth
-npm run start:dev indexing
-npm run start:dev retrieval
-npm run start:dev llm
-```
-
-### 3. Run Frontend
+### 5. Start the Frontend
+In a new terminal window:
 ```bash
 cd frontend
 npm run dev
-# Open http://localhost:5173
 ```
+
+### 6. Open in Browser
+- **Frontend App**: [http://localhost:5173](http://localhost:5173) (Use this for development with React DevTools and Vite HMR).
+  - All `/api/*` requests from the frontend are automatically routed through the Edge Proxy (`http://localhost:80/api/*`) $\rightarrow$ API Gateway $\rightarrow$ backend microservices.
+- **Edge Gateway Directly**: [http://localhost](http://localhost) (Proxies to your host Vite dev server with WebSocket HMR support).
 
 ---
 
-## 📚 Book Ingestion Pipeline
+## 💾 Volume Strategy: Local Dev vs. Production
 
-### 1. Download EPUB Books
-`epub_links.json` already contains 1,000 verified links from Standard Ebooks.
-
-```bash
-# Download sample or catalog epubs
-python3 downloader.py
+### Local Development (`docker-compose.yml` & `Dockerfile.dev`)
+In local development, all backend microservices share a single **named volume** (`backend_node_modules`):
+```yaml
+volumes:
+  - ./backend:/app
+  - backend_node_modules:/app/node_modules
 ```
 
-### 2. Ingest & Index Books
-Run the unified ingestion script to parse chapters, upload files to SeaweedFS, register metadata, and compute embeddings:
+**Why this is used for local dev:**
+1. **Prevents Orphan Volumes**: Replaces anonymous volumes (`- /app/node_modules`), preventing Docker from littering your disk with untracked anonymous volume directories on container recreation.
+2. **Protects Linux Container Binaries**: Keeps container-compiled Linux binaries (e.g., native dependencies) inside `backend_node_modules` so they aren't overwritten by host-OS `node_modules` when mounting `./backend:/app`.
+3. **Monorepo Efficiency**: Because all 6 NestJS microservices share the same monorepo root package tree, a single named volume avoids duplicating 6 separate copies of `node_modules` in dev.
 
+### Production Builds (`Dockerfile`)
+**In production, this named volume is NOT used.** Each microservice is packaged into an independent, minimal, self-contained Docker image using multi-stage builds:
 ```bash
-# Ingest downloaded EPUBs
-python3 ingest.py --dir downloads_epubs
-
-# Or test parsing a single EPUB without network upload (Dry-run)
-python3 ingest.py --file path/to/book.epub --dry-run
+# Example: Building production image for the Book service
+docker build -f backend/Dockerfile --build-arg APP=book -t lbre-book:latest ./backend
 ```
+
+**How production builds work:**
+1. **Isolated Stage**: The build stage compiles **only** the target app (`npx nest build ${APP}`).
+2. **Production-Only Dependencies**: The final lightweight runtime image installs only runtime dependencies (`npm ci --omit=dev`).
+3. **Tree-Shaken Code**: The final image copies only `dist/apps/${APP}` and contains **zero volume mounts** or host overlays. Each microservice container runs strictly with the code and packages it needs.
 
 ---
 
-## 📡 API Gateway Endpoints Reference
+## 📊 Endpoints & Dashboards
 
-| Method | Route | Description |
+| Service / Dashboard | URL | Credentials / Notes |
 | :--- | :--- | :--- |
-| `GET` | `/health` | Service health status check |
-| `GET` | `/books` | List all available books |
-| `GET` | `/books/:id` | Get book metadata by ID |
-| `POST` | `/books` | Register a new book |
-| `POST` | `/auth/register` | Register a new student or admin user |
-| `POST` | `/auth/login` | Authenticate user and receive access token |
-| `GET` | `/search?q=:query` | Unified Hybrid RAG Search (BM25 + Vector HNSW + RRF + LLM Overview) |
-| `POST` | `/indexing` | Submit chapters and chunks for indexing |
+| **Frontend UI (Dev Server)** | [http://localhost:5173](http://localhost:5173) | Host Vite dev server with React DevTools |
+| **Edge Gateway (Unified Entry)**| [http://localhost](http://localhost) | Nginx edge proxy |
+| **API Gateway (HTTP)** | [http://localhost:3000](http://localhost:3000) or `/api/` | REST HTTP entrypoint |
+| **RabbitMQ Management** | [http://localhost:15672](http://localhost:15672) | `guest` / `guest` |
+| **SeaweedFS S3 Storage** | [http://localhost:8333](http://localhost:8333) | Access Key: `devaccess`, Secret: `devsecret` |
+| **Grafana Monitoring** | [http://localhost:3001](http://localhost:3001) or `/monitoring/` | `admin` / `admin` |
 
 ---
 
-## 🧪 Testing
+## 👥 Group Project Ownership & Working on Microservices
+
+Each group member owns their assigned microservice in `backend/apps/<service>`:
+- **`backend/apps/api-gateway`**: HTTP controllers, request routing to RabbitMQ clients.
+- **`backend/apps/auth`**: Student/Admin authentication, user registration, JWT validation.
+- **`backend/apps/book`**: Book CRUD, SeaweedFS S3 upload/download.
+- **`backend/apps/indexing`**: Chapter chunking, sparse BM25 inverted index, dense vector embeddings (`BAAI/bge-small-en-v1.5`).
+- **`backend/apps/retrieval`**: Sparse BM25 + Dense PgVector similarity search + Reciprocal Rank Fusion (RRF).
+- **`backend/apps/llm`**: RAG synthesis with top 5 fused chunks via local Ollama / LLaMA.
+- **`frontend`**: React components, search interface, citations view, dev tools.
+
+### Useful Commands for Daily Development
 
 ```bash
-# Run unit tests
-cd backend && npm run test
+# View live logs for your specific microservice
+docker compose logs -f book
+docker compose logs -f auth
+docker compose logs -f api-gateway
 
-# Build all microservices
-npx nest build api-gateway && npx nest build book && npx nest build auth && npx nest build indexing && npx nest build retrieval && npx nest build llm
+# Restart a specific service
+docker compose restart book
+
+# Rebuild container images if you update backend package.json
+docker compose build
+
+# Stop all containers
+docker compose down
+
+# Stop and wipe database data / volumes (clean slate)
+docker compose down -v
 ```
+
+Shared contracts and message patterns are defined in [backend/libs/contracts](file:///home/user/Library-Book-Retrieval-Rag-Engine/backend/libs/contracts/src/index.ts) as the common API interface between microservices.

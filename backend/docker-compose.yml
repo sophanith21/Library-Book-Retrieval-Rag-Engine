@@ -51,7 +51,7 @@ services:
       S3_BUCKET: books
     volumes:
       - .:/app
-      - /app/node_modules
+      - backend_node_modules:/app/node_modules
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -70,7 +70,7 @@ services:
       - '3000:3000'
     volumes:
       - .:/app
-      - /app/node_modules
+      - backend_node_modules:/app/node_modules
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -78,3 +78,4 @@ services:
 volumes:
   pgdata:
   seaweeddata:
+  backend_node_modules:
