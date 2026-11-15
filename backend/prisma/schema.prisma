@@ -1,0 +1,30 @@
+// backend/prisma/schema.prisma
+generator client {
+  provider     = "prisma-client"
+  output       = "../libs/prisma/src/generated"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+  schemas  = ["auth", "book"]   // "knowledge" stays raw SQL
+}
+
+model User {
+  id           String @id @default(uuid())
+  email        String @unique
+  passwordHash String
+  role         String @default("student")
+
+  @@map("users")
+  @@schema("auth")
+}
+
+model Book {
+  id      String  @id @default(uuid())
+  title   String
+  fileKey String?
+
+  @@map("books")
+  @@schema("book")
+}
