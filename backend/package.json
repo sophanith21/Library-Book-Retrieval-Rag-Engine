@@ -82,7 +82,9 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^@app/contracts(|/.*)$": "<rootDir>/libs/contracts/src/$1"
+      "^@app/contracts(|/.*)$": "<rootDir>/libs/contracts/src/$1",
+      "^@app/text-analysis(|/.*)$": "<rootDir>/libs/text-analysis/src/$1",
+      "^@app/knowledge-db(|/.*)$": "<rootDir>/libs/knowledge-db/src/$1"
     }
   }
 }

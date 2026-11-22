@@ -1,12 +1,14 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
+import { MessagePattern, Payload } from '@nestjs/microservices';
+import { PATTERNS, SearchQueryDto, SearchResponse } from '@app/contracts';
 import { RetrievalService } from './retrieval.service';
 
 @Controller()
 export class RetrievalController {
   constructor(private readonly retrievalService: RetrievalService) {}
 
-  @Get()
-  getHello(): string {
-    return this.retrievalService.getHello();
+  @MessagePattern(PATTERNS.RETRIEVAL.SEARCH)
+  search(@Payload() dto: SearchQueryDto): Promise<SearchResponse> {
+    return this.retrievalService.search(dto);
   }
 }

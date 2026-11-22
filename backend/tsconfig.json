@@ -33,6 +33,18 @@
       ],
       "@app/prisma/*": [
         "libs/prisma/src/*"
+      ],
+      "@app/text-analysis": [
+        "libs/text-analysis/src"
+      ],
+      "@app/text-analysis/*": [
+        "libs/text-analysis/src/*"
+      ],
+      "@app/knowledge-db": [
+        "libs/knowledge-db/src"
+      ],
+      "@app/knowledge-db/*": [
+        "libs/knowledge-db/src/*"
       ]
     }
   }

@@ -2,7 +2,7 @@
 """
 Book Ingestion & Parsing Pipeline for Library Book Retrieval RAG Engine (LBRE)
 Fulfills 'Data Retrieval & Ingestion' from architecture specifications:
-- Parses EPUB files into: title, author, cover image, and chapters [{chapter_no, chunks[]}]
+- Parses EPUB files into: title, author, cover image, and chapters [{chapterNo, chunks[]}]
 - Uploads EPUB + cover image to SeaweedFS (S3)
 - Stores book metadata and chapter chunks into PostgreSQL (pgvector) or via API Gateway.
 """
@@ -104,7 +104,7 @@ def parse_epub(epub_path: Path):
                     chunks = chunk_text(plain_text)
                     if chunks:
                         chapters.append({
-                            "chapter_no": chapter_no,
+                            "chapterNo": chapter_no,
                             "chunks": chunks
                         })
                         chapter_no += 1
@@ -207,6 +207,21 @@ def main():
         print(f"[*] Found {len(epub_files)} EPUB files in {epub_dir}")
         for path in epub_files[:20]: # batch ingest sample
             ingest_epub(path, api_url=args.api_url, dry_run=args.dry_run)
+        if not args.dry_run:
+            finalize_index(args.api_url)
+
+
+def finalize_index(api_url: str):
+    """
+    Recompute BM25 corpus statistics once the batch is indexed. The indexing
+    queue is processed in order, so this runs after every book queued above.
+    """
+    print("[*] Finalizing inverted index (BM25 stats)...")
+    try:
+        res = requests.post(f"{api_url.rstrip('/')}/indexing/finalize", timeout=600)
+        print(f"    [+] Index finalized: {res.status_code} {res.text}")
+    except Exception as e:
+        print(f"    [!] Finalize failed ({e}); run POST /indexing/finalize manually")
 
 
 if __name__ == "__main__":

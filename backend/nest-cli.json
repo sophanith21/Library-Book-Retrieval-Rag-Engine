@@ -81,6 +81,24 @@
       "compilerOptions": {
         "tsConfigPath": "apps/retrieval/tsconfig.app.json"
       }
+    },
+    "text-analysis": {
+      "type": "library",
+      "root": "libs/text-analysis",
+      "entryFile": "index",
+      "sourceRoot": "libs/text-analysis/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/text-analysis/tsconfig.lib.json"
+      }
+    },
+    "knowledge-db": {
+      "type": "library",
+      "root": "libs/knowledge-db",
+      "entryFile": "index",
+      "sourceRoot": "libs/knowledge-db/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/knowledge-db/tsconfig.lib.json"
+      }
     }
   }
 }

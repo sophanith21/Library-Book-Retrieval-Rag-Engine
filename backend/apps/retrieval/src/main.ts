@@ -1,8 +1,21 @@
 import { NestFactory } from '@nestjs/core';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { QUEUES } from '@app/contracts';
 import { RetrievalModule } from './retrieval.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(RetrievalModule);
-  await app.listen(process.env.port ?? 3000);
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+    RetrievalModule,
+    {
+      transport: Transport.RMQ,
+      options: {
+        urls: [process.env.RABBITMQ_URL ?? 'amqp://guest:guest@localhost:5672'],
+        queue: QUEUES.RETRIEVAL,
+        queueOptions: { durable: true },
+      },
+    },
+  );
+  app.enableShutdownHooks();
+  await app.listen();
 }
-bootstrap();
+void bootstrap();
