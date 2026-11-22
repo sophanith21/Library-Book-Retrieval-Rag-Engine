@@ -29,8 +29,10 @@ export const PATTERNS = {
   INDEXING: {
     PROCESS_BOOK: 'indexing.processBook',
     GET_STATUS: 'indexing.getStatus',
+    FINALIZE: 'indexing.finalize',
   },
   RETRIEVAL: {
+    SEARCH: 'retrieval.search',
     HYBRID_SEARCH: 'retrieval.hybridSearch',
   },
   LLM: {
@@ -93,6 +95,76 @@ export class ProcessBookIndexDto {
   title!: string;
   author!: string;
   chapters!: ChapterItem[];
+}
+
+export type IndexStatus = 'pending' | 'indexing' | 'done' | 'failed';
+
+export class BookIndexStatus {
+  bookId!: string;
+  status!: IndexStatus | 'not_found';
+  chunkCount!: number;
+  tokenCount!: number;
+  error?: string | null;
+  indexedAt?: Date | null;
+}
+
+export class IndexStatsResponse {
+  totalChunks!: number;
+  totalBooks!: number;
+  totalTerms!: number;
+  avgChunkLen!: number;
+  updatedAt!: Date;
+}
+
+// ---------------------------------------------------------------------------
+// BM25 keyword search (inverted index)
+// ---------------------------------------------------------------------------
+
+export class SearchQueryDto {
+  query!: string;
+  /** Results per page (default 10, max 50) */
+  limit?: number;
+  offset?: number;
+}
+
+/** [start, end) character range inside Snippet.text to emphasise. */
+export class HighlightSpan {
+  start!: number;
+  end!: number;
+}
+
+/**
+ * Plain text plus highlight ranges, rather than HTML, so the client renders
+ * <mark> itself and book text can never inject markup.
+ */
+export class Snippet {
+  text!: string;
+  highlights!: HighlightSpan[];
+}
+
+export class SearchResultItem {
+  bookId!: string;
+  title!: string;
+  author!: string | null;
+  /** BM25 score of the book's best-matching chunk */
+  score!: number;
+  /** How many distinct query terms that chunk contains */
+  matchedTerms!: number;
+  chapterNo!: number;
+  chunkNo!: number;
+  snippet!: Snippet;
+}
+
+export class SearchResponse {
+  query!: string;
+  /** Normalised terms actually searched (after stopwords and stemming) */
+  terms!: string[];
+  /** Number of matching books across all pages */
+  total!: number;
+  limit!: number;
+  offset!: number;
+  tookMs!: number;
+  results!: SearchResultItem[];
 }
 
 export class HybridSearchQueryDto {
