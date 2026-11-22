@@ -131,3 +131,4 @@ Thumbs.db
 
 # Ignoring the downloaded epubs
 downloads_epubs/
+ranking-evaluation/sampled-data/
