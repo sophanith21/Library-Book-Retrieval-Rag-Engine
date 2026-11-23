@@ -2,7 +2,7 @@
 
 import re
 import nltk
-import json
+import json 
 
 from pathlib import Path
 from nltk.corpus import stopwords
@@ -33,11 +33,6 @@ def remove_stop_words(tokens):
       if token not in STOP_WORDS
   ]
 
-def pre_process(text):
-  tokens = tokenize(text)
-  tokens = remove_stop_words(tokens)
-  return tokens
-
 def porter_stems(tokens):
   return [porter.stem(token) for token in tokens]
 
@@ -45,7 +40,26 @@ def snowball_stems(tokens):
   return [snowball.stem(token) for token in tokens]
 
 def lemmatize_tokens(tokens):
-  return[lemmatizer.lemmatize(token, pos="n") for token in tokens] 
+  return[lemmatizer.lemmatize(token, pos="n") for token in tokens]
+
+def pre_process(text, method="lemmatization"):
+  tokens = tokenize(text)
+  tokens = remove_stop_words(tokens)
+  if method == "porter":
+    normalized_tokens = porter_stems(tokens)
+
+  elif method == "snowball":
+    normalized_tokens = snowball_stems(tokens)
+
+  elif method == "lemmatization":
+    normalized_tokens = lemmatize_tokens(tokens)
+
+  else:
+    raise ValueError(
+        "Invalid method. Choose porter, snowball, or lemmatization."
+    )
+
+  return normalized_tokens 
 
 
 def process_documents(documents, method="lemmatization"):
