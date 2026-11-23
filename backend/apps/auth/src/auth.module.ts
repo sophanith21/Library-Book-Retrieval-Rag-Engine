@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { SuperTokensModule } from 'supertokens-nestjs';
+import { PrismaModule } from '@app/prisma';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { supertokensConfig } from './supertokens-config';
 
 @Module({
   imports: [
@@ -11,7 +10,7 @@ import { supertokensConfig } from './supertokens-config';
       isGlobal: true,
       envFilePath: ['.env', '../.env'],
     }),
-    SuperTokensModule.forRoot(supertokensConfig),
+    PrismaModule,
   ],
   controllers: [AuthController],
   providers: [AuthService],

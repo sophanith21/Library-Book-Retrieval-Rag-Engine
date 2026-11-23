@@ -1,21 +1,21 @@
 import { NestFactory } from '@nestjs/core';
-import supertokens from 'supertokens-node';
-import { SuperTokensExceptionFilter } from 'supertokens-nestjs';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { QUEUES } from '@app/contracts';
 import { AuthModule } from './auth.module';
-import { appInfo } from './supertokens-config';
-import { middleware } from 'supertokens-node/framework/express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AuthModule);
-
-  app.enableCors({
-    origin: [appInfo.websiteDomain],
-    allowedHeaders: ['content-type', ...supertokens.getAllCORSHeaders()],
-    credentials: true,
-  });
-  app.useGlobalFilters(new SuperTokensExceptionFilter());
-  app.use(middleware());
-
-  await app.listen(process.env.PORT ?? 3001);
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+    AuthModule,
+    {
+      transport: Transport.RMQ,
+      options: {
+        urls: [process.env.RABBITMQ_URL ?? 'amqp://guest:guest@localhost:5672'],
+        queue: QUEUES.AUTH,
+        queueOptions: { durable: true },
+      },
+    },
+  );
+  app.enableShutdownHooks();
+  await app.listen();
 }
 void bootstrap();
