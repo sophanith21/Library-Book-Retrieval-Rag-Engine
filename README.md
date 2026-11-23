@@ -84,8 +84,9 @@ cd backend && npm install && cd ..
 ```
 
 ### 4. Start the Containerized Backend & Infrastructure
-From the project root directory, run:
+From the `backend/` directory, run:
 ```bash
+cd backend
 docker compose up -d
 ```
 This spins up:
@@ -119,11 +120,11 @@ npm run dev
 
 ## 💾 Volume Strategy: Local Dev vs. Production
 
-### Local Development (`docker-compose.yml` & `Dockerfile.dev`)
+### Local Development (`backend/docker-compose.yml` & `Dockerfile.dev`)
 In local development, all backend microservices share a single **named volume** (`backend_node_modules`):
 ```yaml
 volumes:
-  - ./backend:/app
+  - .:/app
   - backend_node_modules:/app/node_modules
 ```
 
@@ -171,6 +172,8 @@ Each group member owns their assigned microservice in `backend/apps/<service>`:
 - **`frontend`**: React components, search interface, citations view, dev tools.
 
 ### Useful Commands for Daily Development
+
+Run these from the `backend/` directory:
 
 ```bash
 # View live logs for your specific microservice
