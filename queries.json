@@ -1,0 +1,207 @@
+{
+    "q1": {
+        "query": "Christopher Robin",
+        "results": [
+            {
+                "rank": 1,
+                "score": 23.703711082998677,
+                "doc_id": "a-a-milne_winnie-the-pooh_ch10_chunk21",
+                "book_id": "a-a-milne_winnie-the-pooh",
+                "title": "Winnie-the-Pooh",
+                "author": "A. A. Milne",
+                "category": [
+                    "Children's Books"
+                ],
+                "chapter": 10,
+                "chunk_index": 21,
+                "text": "At that moment there was a knock at the door.\n\n“Come in,” said Kanga, and in came Christopher Robin.\n\n“Christopher Robin, Christopher Robin!” cried Piglet. “Tell Kanga who I am! She keeps saying I’m Roo. I’m not Roo, am I?”\n\nChristopher Robin looked at him very carefully, and shook his head.\n\n“You can’t be Roo,” he said, “because I’ve just seen Roo playing in Rabbit’s house.”\n\n“Well!” said Kanga. “Fancy that! Fancy my making a mistake like that.”\n\n“There you are!” said Piglet. “I told you so. I’m Piglet.”\n\nChristopher Robin shook his head again.\n\n“Oh, you’re not Piglet,” he said. “I know Piglet well, and he’s quite a different colour.”"
+            },
+            {
+                "rank": 2,
+                "score": 23.616527394509156,
+                "doc_id": "a-a-milne_winnie-the-pooh_ch4_chunk7",
+                "book_id": "a-a-milne_winnie-the-pooh",
+                "title": "Winnie-the-Pooh",
+                "author": "A. A. Milne",
+                "category": [
+                    "Children's Books"
+                ],
+                "chapter": 4,
+                "chunk_index": 7,
+                "text": "He crawled out of the gorse-bush, brushed the prickles from his nose, and began to think again. And the first person he thought of was Christopher Robin.\n\n(“Was that me?” said Christopher Robin in an awed voice, hardly daring to believe it.\n\n“That was you.”\n\nChristopher Robin said nothing, but his eyes got larger and larger, and his face got pinker and pinker.)\n\nSo Winnie-the-Pooh went round to his friend Christopher Robin, who lived behind a green door in another part of the forest.\n\n“Good morning, Christopher Robin,” he said.\n\n“Good morning, Winnie- ther -Pooh,” said you.\n\n“I wonder if you’ve got such a thing as a balloon about you?”\n\n“A balloon?”\n\n“Yes, I just said to myself coming along: ‘I wonder if Christopher Robin has such a thing as a balloon about him?’ I just said it to myself, thinking of balloons, and wondering.”"
+            },
+            {
+                "rank": 3,
+                "score": 23.559897726566042,
+                "doc_id": "a-a-milne_winnie-the-pooh_ch12_chunk17",
+                "book_id": "a-a-milne_winnie-the-pooh",
+                "title": "Winnie-the-Pooh",
+                "author": "A. A. Milne",
+                "category": [
+                    "Children's Books"
+                ],
+                "chapter": 12,
+                "chunk_index": 17,
+                "text": "“Oh, Pooh!” cried Christopher Robin. “Where are you?”\n\n“Here I am,” said a growly voice behind him.\n\n“Pooh!”\n\nThey rushed into each other’s arms.\n\n“How did you get here, Pooh?” asked Christopher Robin, when he was ready to talk again.\n\n“On my boat,” said Pooh proudly. “I had a Very Important Missage sent me in a bottle, and owing to having got some water in my eyes, I couldn’t read it, so I brought it to you. On my boat.”\n\nWith these proud words he gave Christopher Robin the missage.\n\n“But it’s from Piglet!” cried Christopher Robin when he had read it.\n\n“Isn’t there anything about Pooh in it?” asked Bear, looking over his shoulder.\n\nChristopher Robin read the message aloud.\n\n“Oh, are those P ’s Piglets? I thought they were Poohs.”"
+            }
+        ]
+    },
+    "q2": {
+        "query": "Pooh and Piglet",
+        "results": [
+            {
+                "rank": 1,
+                "score": 25.741298166800433,
+                "doc_id": "a-a-milne_the-house-at-pooh-corner_ch10_chunk17",
+                "book_id": "a-a-milne_the-house-at-pooh-corner",
+                "title": "The House at Pooh Corner",
+                "author": "A. A. Milne",
+                "category": [
+                    "Animals--Juvenile fiction",
+                    "Toys--Juvenile fiction",
+                    "Teddy bears--Juvenile fiction",
+                    "Winnie-the-Pooh (Fictitious character)--Juvenile fiction",
+                    "Piglet (Fictitious character)--Juvenile fiction",
+                    "Eeyore (Fictitious character)--Juvenile fiction",
+                    "Christopher Robin (Fictitious character)--Juvenile fiction"
+                ],
+                "chapter": 10,
+                "chunk_index": 17,
+                "text": "Piglet sidled up to Pooh from behind.\n\n“Pooh!” he whispered.\n\n“Yes, Piglet?”\n\n“Nothing,” said Piglet, taking Pooh’s paw. “I just wanted to be sure of you.”"
+            },
+            {
+                "rank": 2,
+                "score": 25.602668844058165,
+                "doc_id": "a-a-milne_the-house-at-pooh-corner_ch12_chunk20",
+                "book_id": "a-a-milne_the-house-at-pooh-corner",
+                "title": "The House at Pooh Corner",
+                "author": "A. A. Milne",
+                "category": [
+                    "Animals--Juvenile fiction",
+                    "Toys--Juvenile fiction",
+                    "Teddy bears--Juvenile fiction",
+                    "Winnie-the-Pooh (Fictitious character)--Juvenile fiction",
+                    "Piglet (Fictitious character)--Juvenile fiction",
+                    "Eeyore (Fictitious character)--Juvenile fiction",
+                    "Christopher Robin (Fictitious character)--Juvenile fiction"
+                ],
+                "chapter": 12,
+                "chunk_index": 20,
+                "text": "Before Piglet could think, Pooh answered for him.\n\n“He’d come and live with me,” said Pooh, “wouldn’t you, Piglet?”\n\nPiglet squeezed his paw.\n\n“Thank you, Pooh,” he said, “I should love to.”"
+            },
+            {
+                "rank": 3,
+                "score": 25.44798820933086,
+                "doc_id": "a-a-milne_winnie-the-pooh_ch8_chunk3",
+                "book_id": "a-a-milne_winnie-the-pooh",
+                "title": "Winnie-the-Pooh",
+                "author": "A. A. Milne",
+                "category": [
+                    "Children's Books"
+                ],
+                "chapter": 8,
+                "chunk_index": 3,
+                "text": "“Piglet, I have decided something.”\n\n“What have you decided, Pooh?”\n\n“I have decided to catch a Heffalump.”\n\nPooh nodded his head several times as he said this, and waited for Piglet to say “How?” or “Pooh, you couldn’t!” or something helpful of that sort, but Piglet said nothing. The fact was Piglet was wishing that he had thought about it first.\n\n“I shall do it,” said Pooh, after waiting a little longer, “by means of a trap. And it must be a Cunning Trap, so you will have to help me, Piglet.”\n\n“Pooh,” said Piglet, feeling quite happy again now, “I will.” And then he said, “How shall we do it?” and Pooh said, “That’s just it. How?” And then they sat down together to think it out."
+            }
+        ]
+    },
+    "q3": {
+        "query": "What happened during the flood?",
+        "results": [
+            {
+                "rank": 1,
+                "score": 13.458277285119898,
+                "doc_id": "augustine-of-hippo_the-city-of-god_marcus-dods-george-wilson-j-j-smith_ch20_chunk31",
+                "book_id": "augustine-of-hippo_the-city-of-god_marcus-dods-george-wilson-j-j-smith",
+                "title": "The City of God",
+                "author": "Augustine of Hippo",
+                "category": [
+                    "Apologetics--Early works to 1800",
+                    "Kingdom of God--Early works to 1800"
+                ],
+                "chapter": 20,
+                "chunk_index": 31,
+                "text": "For Varro begins the book I have already mentioned at this date, and does not propose to himself, as the starting-point from which he may arrive at Roman affairs, anything more ancient than the flood of Ogyges, that is, which happened in the time of Ogyges. Now our writers of chronicles﻿—first Eusebius, and afterwards Jerome, who entirely follow some earlier historians in this opinion﻿—relate that the flood of Ogyges happened more than three hundred years after, during the reign of Phoroneus, the second king of Argos. But whenever he may have lived, Minerva was already worshipped as a goddess when Cecrops reigned in Athens, in whose reign the city itself is reported to have been rebuilt or founded.\n\nIX\n\nWhen the city of Athens was founded, and what reason Varro assigns for its name."
+            },
+            {
+                "rank": 2,
+                "score": 11.764831817574915,
+                "doc_id": "augustine-of-hippo_the-city-of-god_marcus-dods-george-wilson-j-j-smith_ch20_chunk30",
+                "book_id": "augustine-of-hippo_the-city-of-god_marcus-dods-george-wilson-j-j-smith",
+                "title": "The City of God",
+                "author": "Augustine of Hippo",
+                "category": [
+                    "Apologetics--Early works to 1800",
+                    "Kingdom of God--Early works to 1800"
+                ],
+                "chapter": 20,
+                "chunk_index": 30,
+                "text": "Minerva was far more ancient than these; for she is reported to have appeared in virgin age in the times of Ogyges at the lake called Triton, from which she is also styled Tritonia, the inventress truly of many works, and the more readily believed to be a goddess because her origin was so little known. For what is sung about her having sprung from the head of Jupiter belongs to the region of poetry and fable, and not to that of history and real fact. And historical writers are not agreed when Ogyges flourished, in whose time also a great flood occurred﻿—not that greatest one from which no man escaped except those who could get into the ark, for neither Greek nor Latin history knew of it, yet a greater flood than that which happened afterward in Deucalion’s time."
+            },
+            {
+                "rank": 3,
+                "score": 11.099398064100447,
+                "doc_id": "ambrose-bierce_in-the-midst-of-life_ch20_chunk19",
+                "book_id": "ambrose-bierce_in-the-midst-of-life",
+                "title": "In the Midst of Life",
+                "author": "Ambrose Bierce",
+                "category": [
+                    "United States--History--Civil War, 1861-1865--Fiction",
+                    "Horror tales, American",
+                    "Paranormal fiction",
+                    "War stories, American"
+                ],
+                "chapter": 20,
+                "chunk_index": 19,
+                "text": "On that night it so happened that the cemetery in one corner of which lay the now honored ashes of the late Milton Gilson, Esq. , was partly under water. Swollen by incessant rains, Cat Creek had spilled over its banks an angry flood which, after scooping out unsightly hollows wherever the soil had been disturbed, had partly subsided, as if ashamed of the sacrilege, leaving exposed much that had been piously concealed. Even the famous Gilson monument, the pride and glory of Mammon Hill, was no longer a standing rebuke to the “viper brood”; succumbing to the sapping current it had toppled prone to earth. The ghoulish flood had exhumed the poor, decayed pine coffin, which now lay half-exposed, in pitiful contrast to the pompous monolith which, like a giant note of admiration, emphasized the disclosure."
+            }
+        ]
+    },
+    "q4": {
+        "query": "Pooh finds a boat",
+        "results": [
+            {
+                "rank": 1,
+                "score": 19.06626499987835,
+                "doc_id": "a-a-milne_winnie-the-pooh_ch12_chunk19",
+                "book_id": "a-a-milne_winnie-the-pooh",
+                "title": "Winnie-the-Pooh",
+                "author": "A. A. Milne",
+                "category": [
+                    "Children's Books"
+                ],
+                "chapter": 12,
+                "chunk_index": 19,
+                "text": "“Now then, Pooh,” said Christopher Robin, “where’s your boat?”\n\n“I ought to say,” explained Pooh as they walked down to the shore of the island, “that it isn’t just an ordinary sort of boat. Sometimes it’s a Boat, and sometimes it’s more of an Accident. It all depends.”\n\n“Depends on what?”\n\n“On whether I’m on the top of it or underneath it.”\n\n“Oh! Well, where is it?”\n\n“There!” said Pooh, pointing proudly to The Floating Bear .\n\nIt wasn’t what Christopher Robin expected, and the more he looked at it, the more he thought what a Brave and Clever Bear Pooh was, and the more Christopher Robin thought this, the more Pooh looked modestly down his nose and tried to pretend he wasn’t.\n\n“But it’s too small for two of us,” said Christopher Robin sadly.\n\n“Three of us with Piglet.”"
+            },
+            {
+                "rank": 2,
+                "score": 17.881626075282476,
+                "doc_id": "a-a-milne_winnie-the-pooh_ch12_chunk17",
+                "book_id": "a-a-milne_winnie-the-pooh",
+                "title": "Winnie-the-Pooh",
+                "author": "A. A. Milne",
+                "category": [
+                    "Children's Books"
+                ],
+                "chapter": 12,
+                "chunk_index": 17,
+                "text": "“Oh, Pooh!” cried Christopher Robin. “Where are you?”\n\n“Here I am,” said a growly voice behind him.\n\n“Pooh!”\n\nThey rushed into each other’s arms.\n\n“How did you get here, Pooh?” asked Christopher Robin, when he was ready to talk again.\n\n“On my boat,” said Pooh proudly. “I had a Very Important Missage sent me in a bottle, and owing to having got some water in my eyes, I couldn’t read it, so I brought it to you. On my boat.”\n\nWith these proud words he gave Christopher Robin the missage.\n\n“But it’s from Piglet!” cried Christopher Robin when he had read it.\n\n“Isn’t there anything about Pooh in it?” asked Bear, looking over his shoulder.\n\nChristopher Robin read the message aloud.\n\n“Oh, are those P ’s Piglets? I thought they were Poohs.”"
+            },
+            {
+                "rank": 3,
+                "score": 16.451348440121816,
+                "doc_id": "a-a-milne_winnie-the-pooh_ch13_chunk5",
+                "book_id": "a-a-milne_winnie-the-pooh",
+                "title": "Winnie-the-Pooh",
+                "author": "A. A. Milne",
+                "category": [
+                    "Children's Books"
+                ],
+                "chapter": 13,
+                "chunk_index": 5,
+                "text": "Anxious Pooh Song\n\n3 Cheers for Pooh! ( For Who? ) For Pooh﻿— ( Why what did he do? ) I thought you knew; He saved his friend from a wetting! 3 Cheers for Bear! ( For where? ) For Bear﻿— He couldn’t swim, But he rescued him! ( He rescued who? ) Oh, listen, do! I am talking of Pooh﻿— ( Of who? ) Of Pooh! ( I’m sorry I keep forgetting ). Well, Pooh was a Bear of Enormous Brain ( Just say it again! ) Of enormous brain﻿— ( Of enormous what? ) Well, he ate a lot, And I don’t know if he could swim or not, But he managed to float On a sort of boat ( On a sort of what? ) Well, a sort of pot﻿— So now let’s give him three hearty cheers ( So now let’s give him three hearty whiches?"
+            }
+        ]
+    }
+}
