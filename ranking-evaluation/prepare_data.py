@@ -6,6 +6,11 @@ BASE_DIR = Path(__file__).resolve().parent
 INPUT_FILE = BASE_DIR / "sampled-data" / "data" / "data-sample.json"
 OUTPUT_FILE = BASE_DIR / "sampled-data" / "data" / "documents.json"
 
+def load_books():
+    with open(INPUT_FILE, "r", encoding="utf-8") as file:
+        books = json.load(file)
+    return books
+
 def extract_documents(books):
     documents = []
 

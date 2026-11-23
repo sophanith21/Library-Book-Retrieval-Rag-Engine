@@ -84,10 +84,8 @@ build/
 .vite/
 
 # Environment variables & local configuration
-.env
-.env.local
-.env.*.local
-
+.env*
+!.env.example
 # Logs
 logs
 *.log

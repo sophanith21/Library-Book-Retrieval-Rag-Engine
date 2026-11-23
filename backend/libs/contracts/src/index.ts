@@ -1,3 +1,5 @@
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+
 export const SERVICES = {
   AUTH: 'AUTH_SERVICE',
   BOOK: 'BOOK_SERVICE',
@@ -40,25 +42,84 @@ export const PATTERNS = {
   },
 } as const;
 
-// DTO Classes for proper NestJS reflection and metadata
 export class RegisterDto {
+  @ApiProperty({
+    example: 'student@example.com',
+    description: 'User email address',
+  })
   email!: string;
+
+  @ApiProperty({
+    example: 'Password123!',
+    description: 'User password',
+    minLength: 8,
+  })
   password!: string;
+
+  @ApiPropertyOptional({
+    example: 'student',
+    description: 'User role (defaults to student if not provided)',
+    enum: ['student', 'admin'],
+    default: 'student',
+  })
   role?: 'student' | 'admin';
 }
 
 export class LoginDto {
+  @ApiProperty({
+    example: 'student@example.com',
+    description: 'Registered user email address',
+  })
   email!: string;
+
+  @ApiProperty({
+    example: 'Password123!',
+    description: 'User password',
+  })
   password!: string;
 }
 
+export class AuthUser {
+  @ApiProperty({
+    example: '550e8400-e29b-41d4-a716-446655440000',
+    description: 'Unique user ID',
+  })
+  id!: string;
+
+  @ApiProperty({
+    example: 'student@example.com',
+    description: 'User email address',
+  })
+  email!: string;
+
+  @ApiProperty({
+    example: 'student',
+    description: 'User role',
+    enum: ['student', 'admin'],
+  })
+  role!: string;
+}
+
 export class AuthResponse {
+  @ApiProperty({
+    example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+    description: 'JWT access token',
+  })
   accessToken!: string;
-  user!: {
-    id: string;
-    email: string;
-    role: string;
-  };
+
+  @ApiProperty({
+    type: AuthUser,
+    description: 'Authenticated user information',
+  })
+  user!: AuthUser;
+}
+
+export class ValidateTokenDto {
+  @ApiProperty({
+    example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+    description: 'JWT access token to validate',
+  })
+  accessToken!: string;
 }
 
 export class CreateBookDto {

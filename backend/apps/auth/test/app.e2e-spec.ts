@@ -1,24 +1,21 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
-import * as request from 'supertest';
-import { AuthModule } from './../src/auth.module';
+import { AuthUser } from '@app/contracts';
+import { AuthController } from '../src/auth.controller';
+import { AuthService } from '../src/auth.service';
 
-describe('AuthController (e2e)', () => {
-  let app: INestApplication;
+describe('Auth message handlers', () => {
+  it('returns the user behind a validated token', async () => {
+    const user: AuthUser = {
+      id: 'user-1',
+      email: 'ada@school.edu',
+      role: 'student',
+    };
+    const authService = {
+      validate: jest.fn().mockResolvedValue(user),
+    } as unknown as AuthService;
+    const controller = new AuthController(authService);
 
-  beforeEach(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AuthModule],
-    }).compile();
-
-    app = moduleFixture.createNestApplication();
-    await app.init();
-  });
-
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+    await expect(
+      controller.validate({ accessToken: 'token' }),
+    ).resolves.toEqual(user);
   });
 });

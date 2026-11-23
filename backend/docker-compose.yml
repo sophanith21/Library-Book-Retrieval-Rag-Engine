@@ -58,6 +58,24 @@ services:
       postgres:
         condition: service_healthy
 
+  auth:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: npx nest start auth --watch
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/app
+      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672
+    volumes:
+      - .:/app
+      - backend_node_modules:/app/node_modules
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+
+
   indexing:
     build:
       context: .

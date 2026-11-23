@@ -1,22 +1,33 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { AuthResponse, AuthUser } from '@app/contracts';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 
 describe('AuthController', () => {
-  let authController: AuthController;
+  const user: AuthUser = {
+    id: 'user-1',
+    email: 'ada@school.edu',
+    role: 'student',
+  };
+  const session: AuthResponse = { accessToken: 'token', user };
+  const authService = {
+    register: jest.fn().mockResolvedValue(session),
+    login: jest.fn().mockResolvedValue(session),
+    validate: jest.fn().mockResolvedValue(user),
+  };
+  const controller = new AuthController(authService as unknown as AuthService);
 
-  beforeEach(async () => {
-    const app: TestingModule = await Test.createTestingModule({
-      controllers: [AuthController],
-      providers: [AuthService],
-    }).compile();
+  it('forwards register, login, and validate to the service', async () => {
+    const registerDto = { email: 'ada@school.edu', password: 'library-pass' };
+    const loginDto = { email: 'ada@school.edu', password: 'library-pass' };
 
-    authController = app.get<AuthController>(AuthController);
-  });
+    await expect(controller.register(registerDto)).resolves.toBe(session);
+    await expect(controller.login(loginDto)).resolves.toBe(session);
+    await expect(controller.validate({ accessToken: 'token' })).resolves.toBe(
+      user,
+    );
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(authController.getHello()).toBe('Hello World!');
-    });
+    expect(authService.register).toHaveBeenCalledWith(registerDto);
+    expect(authService.login).toHaveBeenCalledWith(loginDto);
+    expect(authService.validate).toHaveBeenCalledWith('token');
   });
 });
