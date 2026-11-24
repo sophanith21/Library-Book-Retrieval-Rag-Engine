@@ -32,9 +32,11 @@ export const PATTERNS = {
     PROCESS_BOOK: 'indexing.processBook',
     GET_STATUS: 'indexing.getStatus',
     FINALIZE: 'indexing.finalize',
+    EMBED_BOOK: 'indexing.embedBook',
   },
   RETRIEVAL: {
     SEARCH: 'retrieval.search',
+    DENSE_SEARCH: 'retrieval.denseSearch',
     HYBRID_SEARCH: 'retrieval.hybridSearch',
   },
   LLM: {
@@ -226,6 +228,73 @@ export class SearchResponse {
   offset!: number;
   tookMs!: number;
   results!: SearchResultItem[];
+}
+
+// ---------------------------------------------------------------------------
+// Dense vector indexing & retrieval (pgvector HNSW)
+// ---------------------------------------------------------------------------
+
+export class EmbedBookDto {
+  /** Optional bookId; if omitted, backfills all chunks missing embeddings */
+  bookId?: string;
+  /** Max chunks to embed in one call (default: all for a book, 500 for global backfill) */
+  limit?: number;
+}
+
+export class EmbedBookResponse {
+  bookId?: string;
+  model!: string;
+  dimensions!: number;
+  embeddedChunks!: number;
+  remainingChunks!: number;
+  tookMs!: number;
+}
+
+export class DenseSearchQueryDto {
+  query!: string;
+  /** Results per page (default 10, max 50) */
+  limit?: number;
+  offset?: number;
+  /** Number of top chunks to return for RRF / RAG (default 20, max 100) */
+  topKChunks?: number;
+}
+
+export class DenseChunkResult {
+  chunkId!: string;
+  bookId!: string;
+  title!: string;
+  author!: string | null;
+  chapterNo!: number;
+  chunkNo!: number;
+  content!: string;
+  /** Cosine similarity in [-1, 1] (higher is closer) */
+  similarity!: number;
+  /** 1-based dense rank */
+  rank!: number;
+}
+
+export class DenseSearchResultItem {
+  bookId!: string;
+  title!: string;
+  author!: string | null;
+  /** Cosine similarity of the book's best-matching chunk */
+  score!: number;
+  chapterNo!: number;
+  chunkNo!: number;
+  snippet!: Snippet;
+}
+
+export class DenseSearchResponse {
+  query!: string;
+  model!: string;
+  /** Number of matching books across all pages */
+  total!: number;
+  limit!: number;
+  offset!: number;
+  tookMs!: number;
+  results!: DenseSearchResultItem[];
+  /** Top-K ranked chunks for downstream RRF fusion or RAG */
+  topChunks!: DenseChunkResult[];
 }
 
 export class HybridSearchQueryDto {

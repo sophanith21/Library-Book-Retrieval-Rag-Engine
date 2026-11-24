@@ -17,12 +17,13 @@ async function bootstrap() {
       'API documentation for the Library Book Retrieval RAG Engine',
     )
     .setVersion('1.0')
+    .addServer('/api', 'Edge Gateway')
+    .addServer('/', 'Direct API Gateway')
     .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-
-  SwaggerModule.setup('api/docs', app, document);
+  SwaggerModule.setup('docs', app, document);
 
   await app.listen(process.env.PORT ?? 3000);
 

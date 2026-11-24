@@ -127,6 +127,7 @@ coverage/
 .DS_Store
 Thumbs.db
 
-# Ignoring the downloaded epubs
+# Ignoring the downloaded epubs & generated parsed JSON
 downloads_epubs/
+parsed_books.json
 ranking-evaluation/sampled-data/
