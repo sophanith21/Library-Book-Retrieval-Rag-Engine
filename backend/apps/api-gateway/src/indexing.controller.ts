@@ -12,6 +12,8 @@ import {
 import { ClientProxy } from '@nestjs/microservices';
 import {
   BookIndexStatus,
+  EmbedBookDto,
+  EmbedBookResponse,
   IndexStatsResponse,
   PATTERNS,
   ProcessBookIndexDto,
@@ -45,6 +47,26 @@ export class IndexingGatewayController {
     return firstValueFrom(
       this.client
         .send<IndexStatsResponse>(PATTERNS.INDEXING.FINALIZE, {})
+        .pipe(timeout(10 * 60_000)),
+    );
+  }
+
+  /** Generate/backfill dense pgvector embeddings for unembedded chunks. */
+  @Post('embed')
+  embedBatch(@Body() dto?: EmbedBookDto): Promise<EmbedBookResponse> {
+    return firstValueFrom(
+      this.client
+        .send<EmbedBookResponse>(PATTERNS.INDEXING.EMBED_BOOK, dto ?? {})
+        .pipe(timeout(10 * 60_000)),
+    );
+  }
+
+  /** Generate/backfill dense pgvector embeddings for a specific book. */
+  @Post(':bookId/embed')
+  embedBook(@Param('bookId') bookId: string): Promise<EmbedBookResponse> {
+    return firstValueFrom(
+      this.client
+        .send<EmbedBookResponse>(PATTERNS.INDEXING.EMBED_BOOK, { bookId })
         .pipe(timeout(10 * 60_000)),
     );
   }

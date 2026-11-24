@@ -45,6 +45,12 @@
       ],
       "@app/knowledge-db/*": [
         "libs/knowledge-db/src/*"
+      ],
+      "@app/embeddings": [
+        "libs/embeddings/src"
+      ],
+      "@app/embeddings/*": [
+        "libs/embeddings/src/*"
       ]
     }
   }

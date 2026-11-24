@@ -6,7 +6,7 @@ import {
   Payload,
   RmqContext,
 } from '@nestjs/microservices';
-import { PATTERNS, ProcessBookIndexDto } from '@app/contracts';
+import { EmbedBookDto, PATTERNS, ProcessBookIndexDto } from '@app/contracts';
 import { IndexingService } from './indexing.service';
 
 /**
@@ -44,6 +44,18 @@ export class IndexingController {
   async finalize(@Ctx() ctx: RmqContext) {
     try {
       return await this.indexingService.finalize();
+    } finally {
+      ack(ctx);
+    }
+  }
+
+  @MessagePattern(PATTERNS.INDEXING.EMBED_BOOK)
+  async embedBook(
+    @Payload() dto: EmbedBookDto,
+    @Ctx() ctx: RmqContext,
+  ) {
+    try {
+      return await this.indexingService.embedBook(dto);
     } finally {
       ack(ctx);
     }

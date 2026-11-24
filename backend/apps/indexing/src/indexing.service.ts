@@ -1,9 +1,13 @@
 import { Injectable, Logger } from '@nestjs/common';
 import {
   BookIndexStatus,
+  EmbedBookDto,
+  EmbedBookResponse,
   IndexStatsResponse,
   ProcessBookIndexDto,
 } from '@app/contracts';
+import { EmbeddingService } from '@app/embeddings';
+import { DenseIndexRepository } from './dense-index.repository';
 import {
   ChunkToIndex,
   InvertedIndexRepository,
@@ -14,7 +18,11 @@ import { buildChunkPostings } from './postings-builder';
 export class IndexingService {
   private readonly logger = new Logger(IndexingService.name);
 
-  constructor(private readonly repo: InvertedIndexRepository) {}
+  constructor(
+    private readonly repo: InvertedIndexRepository,
+    private readonly denseRepo: DenseIndexRepository,
+    private readonly embeddings: EmbeddingService,
+  ) {}
 
   /**
    * Build and store the inverted index for one book. Failures are recorded
@@ -36,6 +44,21 @@ export class IndexingService {
         throw new Error('Book has no non-empty chunks');
       }
       await this.repo.replaceBook(dto, chunks);
+
+      // Append dense vector embeddings for the newly indexed book chunks.
+      // Failures here are logged without failing sparse indexing so embeddings
+      // can be backfilled later via indexing.embedBook.
+      if (this.embeddings.isEnabled()) {
+        try {
+          await this.embedBook({ bookId });
+        } catch (embedErr) {
+          const embedMsg =
+            embedErr instanceof Error ? embedErr.message : String(embedErr);
+          this.logger.warn(
+            `Dense embedding for ${bookId} skipped (can backfill later): ${embedMsg}`,
+          );
+        }
+      }
 
       const status = await this.repo.getBookStatus(bookId);
       this.logger.log(
@@ -86,5 +109,51 @@ export class IndexingService {
         `${stats.totalBooks} books, ${stats.totalChunks} chunks, ${stats.totalTerms} terms`,
     );
     return stats;
+  }
+
+  /**
+   * Generate and store dense vector embeddings (pgvector) for chunks that do
+   * not yet have one. Works per-book or as a global backfill when bookId is omitted.
+   */
+  async embedBook(dto?: EmbedBookDto): Promise<EmbedBookResponse> {
+    const startedAt = Date.now();
+    const bookId = dto?.bookId;
+    const limit = dto?.limit ?? (bookId ? 10_000 : 500);
+
+    const pending = await this.denseRepo.findChunksWithoutEmbeddings(
+      bookId,
+      limit,
+    );
+
+    let embeddedChunks = 0;
+    if (pending.length > 0) {
+      const vectors = await this.embeddings.embedDocuments(
+        pending.map((c) => c.content),
+      );
+      embeddedChunks = await this.denseRepo.updateChunkEmbeddings(
+        pending.map((c, i) => ({
+          chunkId: c.chunkId,
+          embedding: vectors[i],
+        })),
+      );
+    }
+
+    const remainingChunks = await this.denseRepo.countMissingEmbeddings(bookId);
+    const tookMs = Date.now() - startedAt;
+
+    this.logger.log(
+      `Dense embedded ${embeddedChunks} chunks` +
+        (bookId ? ` for ${bookId}` : '') +
+        ` (${remainingChunks} remaining) in ${tookMs} ms`,
+    );
+
+    return {
+      bookId,
+      model: this.embeddings.model,
+      dimensions: this.embeddings.dimensions,
+      embeddedChunks,
+      remainingChunks,
+      tookMs,
+    };
   }
 }

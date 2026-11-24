@@ -93,6 +93,7 @@
       "^@app/prisma(|/.*)$": "<rootDir>/libs/prisma/src/$1",
       "^@app/text-analysis(|/.*)$": "<rootDir>/libs/text-analysis/src/$1",
       "^@app/knowledge-db(|/.*)$": "<rootDir>/libs/knowledge-db/src/$1",
+      "^@app/embeddings(|/.*)$": "<rootDir>/libs/embeddings/src/$1",
       "^(\\.{1,2}/.*)\\.js$": "$1"
     }
   }
