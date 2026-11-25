@@ -662,23 +662,44 @@ def index_books_idempotent(
         if remaining:
             print(f"[!] Timed out waiting for {len(remaining)} books: {sorted(remaining)[:5]}")
 
-    # 1. Finalize sparse BM25 corpus stats (idempotent)
-    print("[*] Finalizing sparse BM25 index stats (POST /indexing/finalize)...")
-    try:
-        fin = requests.post(f"{base}/indexing/finalize", timeout=300)
-        print(f"    [+] Finalize ({fin.status_code}): {fin.text[:200]}")
-    except Exception as exc:
-        print(f"    [!] Finalize failed: {exc}")
-
-    # 2. Backfill any chunks still missing dense embeddings (idempotent)
-    print("[*] Ensuring dense pgvector embeddings (POST /indexing/embed)...")
-    try:
-        emb = requests.post(
-            f"{base}/indexing/embed", json={"limit": 5000}, timeout=600
+    # 1. Finalize sparse BM25 corpus stats (only when new books were queued or --force)
+    if queued_ids or force:
+        print("[*] Finalizing sparse BM25 index stats (POST /indexing/finalize)...")
+        try:
+            fin = requests.post(f"{base}/indexing/finalize", timeout=300)
+            print(f"    [+] Finalize ({fin.status_code}): {fin.text[:200]}")
+        except Exception as exc:
+            print(f"    [!] Finalize failed: {exc}")
+    else:
+        print(
+            "[i] Skipping BM25 finalize (no new books queued; pass --force to recompute)"
         )
-        print(f"    [+] Embed ({emb.status_code}): {emb.text[:200]}")
-    except Exception as exc:
-        print(f"    [!] Dense embed call failed: {exc}")
+
+    # 2. Backfill any chunks still missing dense embeddings in small CPU-safe batches
+    print("[*] Ensuring dense pgvector embeddings (POST /indexing/embed)...")
+    total_backfilled = 0
+    while True:
+        try:
+            emb = requests.post(
+                f"{base}/indexing/embed", json={"limit": 200}, timeout=180
+            )
+            if emb.status_code not in (200, 201):
+                print(f"    [!] Embed ({emb.status_code}): {emb.text[:200]}")
+                break
+            data = emb.json()
+            embedded = int(data.get("embeddedChunks", 0))
+            remaining_chunks = int(data.get("remainingChunks", 0))
+            total_backfilled += embedded
+            if embedded > 0 or remaining_chunks > 0:
+                print(
+                    f"    [+] Embedded {embedded} chunks ({remaining_chunks} remaining)"
+                )
+            if remaining_chunks == 0 or embedded == 0:
+                break
+        except Exception as exc:
+            print(f"    [!] Dense embed call failed: {exc}")
+            break
+    print(f"    [+] Dense embedding check done ({total_backfilled} chunks backfilled)")
 
 
 # =============================================================================

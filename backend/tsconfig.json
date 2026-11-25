@@ -51,6 +51,12 @@
       ],
       "@app/embeddings/*": [
         "libs/embeddings/src/*"
+      ],
+      "@app/observability": [
+        "libs/observability/src"
+      ],
+      "@app/observability/*": [
+        "libs/observability/src/*"
       ]
     }
   }

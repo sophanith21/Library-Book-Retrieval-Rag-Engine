@@ -1,3 +1,7 @@
+import { initTelemetry, OtelLogger } from '@app/observability';
+
+initTelemetry('auth');
+
 import { NestFactory } from '@nestjs/core';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { QUEUES } from '@app/contracts';
@@ -7,6 +11,7 @@ async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     AuthModule,
     {
+      logger: new OtelLogger('auth'),
       transport: Transport.RMQ,
       options: {
         urls: [process.env.RABBITMQ_URL ?? 'amqp://guest:guest@localhost:5672'],
