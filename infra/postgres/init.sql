@@ -88,6 +88,12 @@ CREATE TABLE IF NOT EXISTS knowledge.postings (
 -- Reverse lookup: needed for ON DELETE CASCADE when a book is re-indexed or removed.
 CREATE INDEX IF NOT EXISTS postings_chunk_idx ON knowledge.postings (chunk_id);
 
+-- Covering index for BM25 scoring: enables Index-Only Scans without reading the
+-- large positions/char_starts/char_ends arrays from the heap table.
+CREATE INDEX IF NOT EXISTS postings_bm25_covering_idx
+  ON knowledge.postings (term_id, bm25_weight DESC)
+  INCLUDE (chunk_id, book_id);
+
 -- =============================================================================
 -- knowledge.index_stats — corpus-wide statistics for BM25
 -- =============================================================================
@@ -97,6 +103,7 @@ CREATE TABLE IF NOT EXISTS knowledge.index_stats (
   id             BOOLEAN PRIMARY KEY DEFAULT TRUE CHECK (id),  -- enforces a single row
   total_chunks   BIGINT           NOT NULL DEFAULT 0,  -- N
   total_books    INT              NOT NULL DEFAULT 0,
+  dirty_books    INT              NOT NULL DEFAULT 0,  -- books indexed since last full finalize
   avg_chunk_len  DOUBLE PRECISION NOT NULL DEFAULT 0,  -- avgdl
   bm25_k1        DOUBLE PRECISION NOT NULL DEFAULT 1.2,
   bm25_b         DOUBLE PRECISION NOT NULL DEFAULT 0.75,
@@ -150,6 +157,7 @@ BEGIN
   UPDATE knowledge.index_stats
      SET total_chunks  = v_n,
          total_books   = (SELECT count(DISTINCT book_id) FROM knowledge.chunks),
+         dirty_books   = 0,
          avg_chunk_len = v_avgdl,
          updated_at    = now()
    RETURNING bm25_k1, bm25_b INTO v_k1, v_b;

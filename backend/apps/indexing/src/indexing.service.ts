@@ -100,6 +100,10 @@ export class IndexingService {
     return this.repo.getBookStatus(bookId);
   }
 
+  getStats(): Promise<IndexStatsResponse> {
+    return this.repo.getStats();
+  }
+
   /** Run after a bulk load so BM25 weights reflect the whole corpus. */
   async finalize(): Promise<IndexStatsResponse> {
     const startedAt = Date.now();

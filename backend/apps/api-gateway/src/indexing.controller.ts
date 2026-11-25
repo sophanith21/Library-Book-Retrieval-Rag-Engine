@@ -71,6 +71,16 @@ export class IndexingGatewayController {
     );
   }
 
+  /** Current corpus statistics including dirtyBooks count since last finalize. */
+  @Get('stats')
+  getStats(): Promise<IndexStatsResponse> {
+    return firstValueFrom(
+      this.client
+        .send<IndexStatsResponse>(PATTERNS.INDEXING.GET_STATS, {})
+        .pipe(timeout(10_000)),
+    );
+  }
+
   @Get(':bookId')
   getStatus(@Param('bookId') bookId: string): Promise<BookIndexStatus> {
     return firstValueFrom(
