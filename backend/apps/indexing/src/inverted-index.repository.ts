@@ -45,6 +45,12 @@ export class InvertedIndexRepository {
       const chunkIds = await this.insertChunks(client, bookId, chunks);
       const termIds = await this.upsertTerms(client, chunks);
       await this.insertPostings(client, bookId, chunks, chunkIds, termIds);
+      await this.scoreBookPostingsIncremental(client, bookId);
+
+      // Track how many books were added/updated since the last full finalize
+      await client.query(
+        'UPDATE knowledge.index_stats SET dirty_books = dirty_books + 1',
+      );
 
       const tokenTotal = chunks.reduce((sum, c) => sum + c.tokenCount, 0);
       await client.query(
@@ -185,6 +191,32 @@ export class InvertedIndexRepository {
     await flush();
   }
 
+  /**
+   * Assign approximate BM25 weights for ONLY this book's postings using the
+   * cached corpus stats (avgdl, N, terms.idf), so a newly uploaded book is
+   * immediately searchable without waiting for a full-corpus finalize.
+   */
+  private async scoreBookPostingsIncremental(
+    client: PoolClient,
+    bookId: string,
+  ): Promise<void> {
+    await client.query(
+      `UPDATE knowledge.postings p
+          SET bm25_weight =
+                coalesce(t.idf, ln(1 + (greatest(s.total_chunks, 1) - 0.5) / 1.5))
+                * p.term_freq * (s.bm25_k1 + 1)
+                / (p.term_freq + s.bm25_k1 * (1 - s.bm25_b + s.bm25_b * c.token_count / s.avg_chunk_len))
+         FROM knowledge.terms t,
+              knowledge.chunks c,
+              knowledge.index_stats s
+        WHERE p.book_id = $1
+          AND t.id = p.term_id
+          AND c.id = p.chunk_id
+          AND s.avg_chunk_len > 0`,
+      [bookId],
+    );
+  }
+
   async markIndexing(bookId: string): Promise<void> {
     await this.pool.query(
       `INSERT INTO knowledge.indexed_books (book_id, status)
@@ -229,17 +261,17 @@ export class InvertedIndexRepository {
     };
   }
 
-  /** Recompute df, IDF, N, avgdl and every posting's BM25 weight. */
-  async refreshStats(): Promise<IndexStatsResponse> {
-    await this.pool.query('SELECT knowledge.refresh_index_stats()');
+  /** Read current corpus statistics including dirty_books since last finalize. */
+  async getStats(): Promise<IndexStatsResponse> {
     const { rows } = await this.pool.query<{
       total_chunks: string;
       total_books: number;
+      dirty_books: number;
       avg_chunk_len: number;
       updated_at: Date;
       total_terms: string;
     }>(
-      `SELECT s.total_chunks, s.total_books, s.avg_chunk_len, s.updated_at,
+      `SELECT s.total_chunks, s.total_books, s.dirty_books, s.avg_chunk_len, s.updated_at,
               (SELECT count(*) FROM knowledge.terms) AS total_terms
          FROM knowledge.index_stats s`,
     );
@@ -247,9 +279,16 @@ export class InvertedIndexRepository {
     return {
       totalChunks: Number(s.total_chunks),
       totalBooks: s.total_books,
+      dirtyBooks: s.dirty_books,
       totalTerms: Number(s.total_terms),
       avgChunkLen: s.avg_chunk_len,
       updatedAt: s.updated_at,
     };
+  }
+
+  /** Recompute df, IDF, N, avgdl and every posting's BM25 weight; resets dirty_books = 0. */
+  async refreshStats(): Promise<IndexStatsResponse> {
+    await this.pool.query('SELECT knowledge.refresh_index_stats()');
+    return this.getStats();
   }
 }

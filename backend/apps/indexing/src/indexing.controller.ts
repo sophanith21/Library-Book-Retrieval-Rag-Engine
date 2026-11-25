@@ -40,6 +40,15 @@ export class IndexingController {
     }
   }
 
+  @MessagePattern(PATTERNS.INDEXING.GET_STATS)
+  async getStats(@Ctx() ctx: RmqContext) {
+    try {
+      return await this.indexingService.getStats();
+    } finally {
+      ack(ctx);
+    }
+  }
+
   @MessagePattern(PATTERNS.INDEXING.FINALIZE)
   async finalize(@Ctx() ctx: RmqContext) {
     try {

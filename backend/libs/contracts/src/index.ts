@@ -31,6 +31,7 @@ export const PATTERNS = {
   INDEXING: {
     PROCESS_BOOK: 'indexing.processBook',
     GET_STATUS: 'indexing.getStatus',
+    GET_STATS: 'indexing.getStats',
     FINALIZE: 'indexing.finalize',
     EMBED_BOOK: 'indexing.embedBook',
   },
@@ -174,6 +175,7 @@ export class BookIndexStatus {
 export class IndexStatsResponse {
   totalChunks!: number;
   totalBooks!: number;
+  dirtyBooks!: number;
   totalTerms!: number;
   avgChunkLen!: number;
   updatedAt!: Date;
