@@ -25,12 +25,19 @@ export const PATTERNS = {
   BOOK: {
     FIND_ALL: 'book.findAll',
     FIND_BY_ID: 'book.findById',
+    CATEGORIES: 'book.categories',
     CREATE: 'book.create',
+    UPDATE: 'book.update',
+    DELETE: 'book.delete',
+    UPLOAD: 'book.upload',
+    REINDEX: 'book.reindex',
     GET_FILE_URL: 'book.getFileUrl',
   },
   INDEXING: {
     PROCESS_BOOK: 'indexing.processBook',
+    DELETE_BOOK: 'indexing.deleteBook',
     GET_STATUS: 'indexing.getStatus',
+    GET_STATUSES: 'indexing.getStatuses',
     GET_STATS: 'indexing.getStats',
     FINALIZE: 'indexing.finalize',
     EMBED_BOOK: 'indexing.embedBook',
@@ -125,22 +132,136 @@ export class ValidateTokenDto {
   accessToken!: string;
 }
 
+/**
+ * Register book metadata. Also accepts the field names ingest2.py sends
+ * (`category`, `date`) so existing ingestion scripts work unchanged.
+ */
 export class CreateBookDto {
+  @ApiPropertyOptional({ example: 'book-herman-melville-moby-dick' })
   id?: string;
+  @ApiProperty({ example: 'Moby Dick' })
   title!: string;
-  author!: string;
-  coverUrl?: string;
-  fileKey?: string;
+  @ApiPropertyOptional({ example: 'Herman Melville', default: 'Unknown' })
+  author?: string;
+  @ApiPropertyOptional({ type: [String], example: ['Sea stories'] })
+  categories?: string[];
+  @ApiPropertyOptional({ type: [String], description: 'Alias of categories' })
+  category?: string[];
+  @ApiPropertyOptional({ example: '1851' })
+  publishedDate?: string | null;
+  @ApiPropertyOptional({ description: 'Alias of publishedDate' })
+  date?: string | null;
+  @ApiPropertyOptional()
+  description?: string | null;
+  @ApiPropertyOptional({ description: 'Storage key or absolute URL' })
+  coverUrl?: string | null;
+  @ApiPropertyOptional({ example: 'epubs/moby-dick.epub' })
+  fileKey?: string | null;
+}
+
+export class UpdateBookDto {
+  @ApiPropertyOptional()
+  title?: string;
+  @ApiPropertyOptional()
+  author?: string;
+  @ApiPropertyOptional({ type: [String] })
+  categories?: string[];
+  @ApiPropertyOptional()
+  publishedDate?: string | null;
+  @ApiPropertyOptional()
+  description?: string | null;
+}
+
+/** RPC payload for book.update (the id travels next to the patch). */
+export class UpdateBookMessage {
+  id!: string;
+  patch!: UpdateBookDto;
 }
 
 export class BookItem {
+  @ApiProperty()
   id!: string;
+  @ApiProperty()
   title!: string;
+  @ApiProperty()
   author!: string;
-  coverUrl?: string | null;
-  fileKey?: string | null;
-  createdAt?: Date;
-  updatedAt?: Date;
+  @ApiProperty({ type: [String] })
+  categories!: string[];
+  @ApiPropertyOptional()
+  publishedDate!: string | null;
+  @ApiPropertyOptional()
+  description!: string | null;
+  /** Browser-loadable cover URL (presigned when stored in object storage) */
+  @ApiPropertyOptional()
+  coverUrl!: string | null;
+  @ApiProperty({ description: 'Whether an EPUB file is stored for this book' })
+  hasFile!: boolean;
+  @ApiProperty()
+  createdAt!: Date;
+  @ApiProperty()
+  updatedAt!: Date;
+}
+
+export class ListBooksQueryDto {
+  /** Case-insensitive match on title or author */
+  q?: string;
+  category?: string;
+  limit?: number;
+  offset?: number;
+  sort?: 'title' | 'author' | 'newest';
+}
+
+export class BookListResponse {
+  @ApiProperty()
+  total!: number;
+  @ApiProperty()
+  limit!: number;
+  @ApiProperty()
+  offset!: number;
+  @ApiProperty({ type: [BookItem] })
+  items!: BookItem[];
+}
+
+export class CategoryCount {
+  @ApiProperty()
+  name!: string;
+  @ApiProperty()
+  count!: number;
+}
+
+export class BookFileUrlResponse {
+  @ApiProperty()
+  url!: string;
+  @ApiProperty({ description: 'Seconds until the URL stops working' })
+  expiresIn!: number;
+  @ApiProperty()
+  filename!: string;
+}
+
+/** RPC payload for book.upload: the gateway forwards the multipart file. */
+export class UploadBookMessage {
+  filename!: string;
+  contentBase64!: string;
+}
+
+export class UploadBookResponse {
+  @ApiProperty({ type: BookItem })
+  book!: BookItem;
+  @ApiProperty()
+  chapterCount!: number;
+  @ApiProperty()
+  chunkCount!: number;
+  @ApiProperty({
+    description: 'True when the book was queued on the indexing service',
+  })
+  indexingQueued!: boolean;
+}
+
+export class DeleteBookResponse {
+  @ApiProperty()
+  id!: string;
+  @ApiProperty()
+  deleted!: boolean;
 }
 
 export class ChapterChunk {

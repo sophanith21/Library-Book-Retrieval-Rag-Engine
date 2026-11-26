@@ -100,6 +100,42 @@ export class IndexingService {
     return this.repo.getBookStatus(bookId);
   }
 
+  /** Mark a book as waiting in the queue (best effort; never blocks indexing). */
+  async markQueued(dto: ProcessBookIndexDto): Promise<void> {
+    if (!dto?.bookId) return;
+    try {
+      await this.repo.markQueued(dto);
+    } catch (err) {
+      this.logger.warn(
+        `Could not mark ${dto.bookId} as queued: ${err instanceof Error ? err.message : err}`,
+      );
+    }
+  }
+
+  getStatuses(bookIds: unknown): Promise<BookIndexStatus[]> {
+    const ids = Array.isArray(bookIds)
+      ? [
+          ...new Set(
+            bookIds.filter(
+              (id): id is string => typeof id === 'string' && id !== '',
+            ),
+          ),
+        ].slice(0, 200)
+      : [];
+    return this.repo.getBookStatuses(ids);
+  }
+
+  /** Remove a deleted book's chunks, postings and status row. */
+  async deleteBook(dto: { bookId?: string }): Promise<void> {
+    const bookId = dto?.bookId;
+    if (!bookId) {
+      this.logger.warn('Dropping deleteBook message without a bookId');
+      return;
+    }
+    const chunks = await this.repo.deleteBook(bookId);
+    this.logger.log(`Removed ${bookId} from the index (${chunks} chunks)`);
+  }
+
   getStats(): Promise<IndexStatsResponse> {
     return this.repo.getStats();
   }

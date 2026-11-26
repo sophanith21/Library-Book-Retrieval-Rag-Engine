@@ -217,6 +217,26 @@ export class InvertedIndexRepository {
     );
   }
 
+  /**
+   * Record that a book is waiting in the indexing queue, so the admin UI can
+   * show "Queued" instead of "Not indexed". Leaves a book that is indexing
+   * right now alone; its job will mark it again when it starts.
+   */
+  async markQueued(book: {
+    bookId: string;
+    title?: string;
+    author?: string;
+  }): Promise<void> {
+    await this.pool.query(
+      `INSERT INTO knowledge.indexed_books (book_id, title, author, status)
+       VALUES ($1, $2, $3, 'pending')
+       ON CONFLICT (book_id) DO UPDATE
+         SET status = 'pending', error = NULL
+       WHERE knowledge.indexed_books.status <> 'indexing'`,
+      [book.bookId, book.title ?? null, book.author ?? null],
+    );
+  }
+
   async markIndexing(bookId: string): Promise<void> {
     await this.pool.query(
       `INSERT INTO knowledge.indexed_books (book_id, status)
@@ -233,6 +253,69 @@ export class InvertedIndexRepository {
        ON CONFLICT (book_id) DO UPDATE SET status = 'failed', error = EXCLUDED.error`,
       [bookId, error],
     );
+  }
+
+  /**
+   * Remove a book from the index. Postings go with their chunks (ON DELETE
+   * CASCADE); terms.doc_freq/idf stay stale until the next finalize, which
+   * dirty_books flags.
+   */
+  async deleteBook(bookId: string): Promise<number> {
+    const client = await this.pool.connect();
+    try {
+      await client.query('BEGIN');
+      const res = await client.query(
+        'DELETE FROM knowledge.chunks WHERE book_id = $1',
+        [bookId],
+      );
+      const books = await client.query(
+        'DELETE FROM knowledge.indexed_books WHERE book_id = $1',
+        [bookId],
+      );
+      if ((res.rowCount ?? 0) > 0 || (books.rowCount ?? 0) > 0) {
+        await client.query(
+          'UPDATE knowledge.index_stats SET dirty_books = dirty_books + 1',
+        );
+      }
+      await client.query('COMMIT');
+      return res.rowCount ?? 0;
+    } catch (err) {
+      await client.query('ROLLBACK');
+      throw err;
+    } finally {
+      client.release();
+    }
+  }
+
+  /** Statuses for many books in one query (admin book table). */
+  async getBookStatuses(bookIds: string[]): Promise<BookIndexStatus[]> {
+    if (bookIds.length === 0) return [];
+    const { rows } = await this.pool.query<{
+      book_id: string;
+      status: BookIndexStatus['status'];
+      chunk_count: number;
+      token_count: string;
+      error: string | null;
+      indexed_at: Date | null;
+    }>(
+      `SELECT book_id, status, chunk_count, token_count, error, indexed_at
+         FROM knowledge.indexed_books WHERE book_id = ANY($1::text[])`,
+      [bookIds],
+    );
+    const byId = new Map(rows.map((r) => [r.book_id, r]));
+    return bookIds.map((bookId) => {
+      const row = byId.get(bookId);
+      return row
+        ? {
+            bookId,
+            status: row.status,
+            chunkCount: row.chunk_count,
+            tokenCount: Number(row.token_count),
+            error: row.error,
+            indexedAt: row.indexed_at,
+          }
+        : { bookId, status: 'not_found', chunkCount: 0, tokenCount: 0 };
+    });
   }
 
   async getBookStatus(bookId: string): Promise<BookIndexStatus> {
@@ -271,9 +354,16 @@ export class InvertedIndexRepository {
       updated_at: Date;
       total_terms: string;
     }>(
-      `SELECT s.total_chunks, s.total_books, s.dirty_books, s.avg_chunk_len, s.updated_at,
+      // Book/chunk totals are live (indexed_books has one row per book), so
+      // they're right between finalizes. avg_chunk_len stays the cached BM25
+      // value, which is what ranking uses.
+      `SELECT b.total_chunks, b.total_books, s.dirty_books, s.avg_chunk_len, s.updated_at,
               (SELECT count(*) FROM knowledge.terms) AS total_terms
-         FROM knowledge.index_stats s`,
+         FROM knowledge.index_stats s,
+              (SELECT count(*)::int AS total_books,
+                      coalesce(sum(chunk_count), 0) AS total_chunks
+                 FROM knowledge.indexed_books
+                WHERE status = 'done') b`,
     );
     const s = rows[0];
     return {

@@ -53,6 +53,7 @@ describe('AuthService', () => {
 
   beforeEach(() => {
     users.length = 0;
+    delete process.env.ADMIN_EMAILS;
   });
 
   it('registers a student and returns a token for that user', async () => {
@@ -119,7 +120,36 @@ describe('AuthService', () => {
     }
   });
 
+  it('grants admin only to ADMIN_EMAILS', async () => {
+    process.env.ADMIN_EMAILS = 'Librarian@School.edu, other@school.edu';
+    try {
+      const admin = await service.register({
+        email: 'librarian@school.edu',
+        password: 'library-pass',
+      });
+      expect(admin.user.role).toBe('admin');
+
+      try {
+        await service.register({
+          email: 'mallory@school.edu',
+          password: 'library-pass',
+          role: 'admin',
+        });
+        throw new Error('expected admin self-registration to fail');
+      } catch (err) {
+        expect(authMessage(err)).toEqual({
+          statusCode: 403,
+          message: 'Admin accounts cannot be self-registered',
+        });
+      }
+      expect(users.map((u) => u.email)).toEqual(['librarian@school.edu']);
+    } finally {
+      delete process.env.ADMIN_EMAILS;
+    }
+  });
+
   it('logs in with the registered password and rejects the wrong one', async () => {
+    process.env.ADMIN_EMAILS = 'ada@school.edu';
     await service.register({
       email: 'ada@school.edu',
       password: 'library-pass',

@@ -26,11 +26,19 @@ model Book {
   id        String   @id @default(uuid())
   title     String
   author    String   @default("Unknown")
+  /// EPUB dc:subject values, e.g. ["Fiction", "Sea stories"]
+  categories String[] @default([])
+  /// EPUB dc:date as written in the file (formats vary: "1851", "1851-10-18")
+  publishedDate String?
+  description String?
+  /// Object-storage key ("covers/x.jpg") or an absolute URL
   coverUrl  String?
+  /// Object-storage key of the original EPUB ("epubs/x.epub")
   fileKey   String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  @@index([title])
   @@map("books")
   @@schema("book")
 }
