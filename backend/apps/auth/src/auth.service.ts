@@ -25,7 +25,7 @@ export class AuthService {
     const password = dto?.password ?? '';
     assertEmail(email);
     assertPassword(password);
-    const role = resolveRole(dto?.role);
+    const role = resolveRole(dto?.role, email);
 
     try {
       const user = await this.prisma.user.create({
@@ -157,12 +157,29 @@ function assertPassword(password: string): void {
   }
 }
 
-function resolveRole(role: string | undefined): string {
-  if (role === undefined || role === '') return 'student';
-  if (!ROLES.has(role)) {
+/**
+ * Everyone registers as a student. Admin accounts are granted only to emails
+ * listed in ADMIN_EMAILS (comma-separated), so nobody can make themselves an
+ * admin just by sending role: "admin".
+ */
+function resolveRole(role: string | undefined, email: string): string {
+  if (role !== undefined && role !== '' && !ROLES.has(role)) {
     throw authError(400, 'role must be student or admin');
   }
-  return role;
+  if (adminEmails().has(email)) return 'admin';
+  if (role === 'admin') {
+    throw authError(403, 'Admin accounts cannot be self-registered');
+  }
+  return 'student';
+}
+
+function adminEmails(): Set<string> {
+  return new Set(
+    (process.env.ADMIN_EMAILS ?? '')
+      .split(',')
+      .map((e) => normalizeEmail(e))
+      .filter(Boolean),
+  );
 }
 
 function isUniqueViolation(err: unknown): boolean {

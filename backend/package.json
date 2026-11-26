@@ -41,6 +41,7 @@
     "amqp-connection-manager": "^5.0.1",
     "amqplib": "^2.3.1",
     "bcrypt": "^6.0.0",
+    "fflate": "0.8.3",
     "jsonwebtoken": "^9.0.3",
     "pg": "^8.23.1",
     "pgvector": "^0.3.1",

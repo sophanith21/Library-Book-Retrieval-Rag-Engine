@@ -28,6 +28,8 @@ export type BookMinAggregateOutputType = {
   id: string | null
   title: string | null
   author: string | null
+  publishedDate: string | null
+  description: string | null
   coverUrl: string | null
   fileKey: string | null
   createdAt: Date | null
@@ -38,6 +40,8 @@ export type BookMaxAggregateOutputType = {
   id: string | null
   title: string | null
   author: string | null
+  publishedDate: string | null
+  description: string | null
   coverUrl: string | null
   fileKey: string | null
   createdAt: Date | null
@@ -48,6 +52,9 @@ export type BookCountAggregateOutputType = {
   id: number
   title: number
   author: number
+  categories: number
+  publishedDate: number
+  description: number
   coverUrl: number
   fileKey: number
   createdAt: number
@@ -60,6 +67,8 @@ export type BookMinAggregateInputType = {
   id?: true
   title?: true
   author?: true
+  publishedDate?: true
+  description?: true
   coverUrl?: true
   fileKey?: true
   createdAt?: true
@@ -70,6 +79,8 @@ export type BookMaxAggregateInputType = {
   id?: true
   title?: true
   author?: true
+  publishedDate?: true
+  description?: true
   coverUrl?: true
   fileKey?: true
   createdAt?: true
@@ -80,6 +91,9 @@ export type BookCountAggregateInputType = {
   id?: true
   title?: true
   author?: true
+  categories?: true
+  publishedDate?: true
+  description?: true
   coverUrl?: true
   fileKey?: true
   createdAt?: true
@@ -163,6 +177,9 @@ export type BookGroupByOutputType = {
   id: string
   title: string
   author: string
+  categories: string[]
+  publishedDate: string | null
+  description: string | null
   coverUrl: string | null
   fileKey: string | null
   createdAt: Date
@@ -194,6 +211,9 @@ export type BookWhereInput = {
   id?: Prisma.StringFilter<"Book"> | string
   title?: Prisma.StringFilter<"Book"> | string
   author?: Prisma.StringFilter<"Book"> | string
+  categories?: Prisma.StringNullableListFilter<"Book">
+  publishedDate?: Prisma.StringNullableFilter<"Book"> | string | null
+  description?: Prisma.StringNullableFilter<"Book"> | string | null
   coverUrl?: Prisma.StringNullableFilter<"Book"> | string | null
   fileKey?: Prisma.StringNullableFilter<"Book"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Book"> | Date | string
@@ -204,6 +224,9 @@ export type BookOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   author?: Prisma.SortOrder
+  categories?: Prisma.SortOrder
+  publishedDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   coverUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   fileKey?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -217,6 +240,9 @@ export type BookWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.BookWhereInput | Prisma.BookWhereInput[]
   title?: Prisma.StringFilter<"Book"> | string
   author?: Prisma.StringFilter<"Book"> | string
+  categories?: Prisma.StringNullableListFilter<"Book">
+  publishedDate?: Prisma.StringNullableFilter<"Book"> | string | null
+  description?: Prisma.StringNullableFilter<"Book"> | string | null
   coverUrl?: Prisma.StringNullableFilter<"Book"> | string | null
   fileKey?: Prisma.StringNullableFilter<"Book"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Book"> | Date | string
@@ -227,6 +253,9 @@ export type BookOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   author?: Prisma.SortOrder
+  categories?: Prisma.SortOrder
+  publishedDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   coverUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   fileKey?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -243,6 +272,9 @@ export type BookScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Book"> | string
   title?: Prisma.StringWithAggregatesFilter<"Book"> | string
   author?: Prisma.StringWithAggregatesFilter<"Book"> | string
+  categories?: Prisma.StringNullableListFilter<"Book">
+  publishedDate?: Prisma.StringNullableWithAggregatesFilter<"Book"> | string | null
+  description?: Prisma.StringNullableWithAggregatesFilter<"Book"> | string | null
   coverUrl?: Prisma.StringNullableWithAggregatesFilter<"Book"> | string | null
   fileKey?: Prisma.StringNullableWithAggregatesFilter<"Book"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Book"> | Date | string
@@ -253,6 +285,9 @@ export type BookCreateInput = {
   id?: string
   title: string
   author?: string
+  categories?: Prisma.BookCreatecategoriesInput | string[]
+  publishedDate?: string | null
+  description?: string | null
   coverUrl?: string | null
   fileKey?: string | null
   createdAt?: Date | string
@@ -263,6 +298,9 @@ export type BookUncheckedCreateInput = {
   id?: string
   title: string
   author?: string
+  categories?: Prisma.BookCreatecategoriesInput | string[]
+  publishedDate?: string | null
+  description?: string | null
   coverUrl?: string | null
   fileKey?: string | null
   createdAt?: Date | string
@@ -273,6 +311,9 @@ export type BookUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   author?: Prisma.StringFieldUpdateOperationsInput | string
+  categories?: Prisma.BookUpdatecategoriesInput | string[]
+  publishedDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -283,6 +324,9 @@ export type BookUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   author?: Prisma.StringFieldUpdateOperationsInput | string
+  categories?: Prisma.BookUpdatecategoriesInput | string[]
+  publishedDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -293,6 +337,9 @@ export type BookCreateManyInput = {
   id?: string
   title: string
   author?: string
+  categories?: Prisma.BookCreatecategoriesInput | string[]
+  publishedDate?: string | null
+  description?: string | null
   coverUrl?: string | null
   fileKey?: string | null
   createdAt?: Date | string
@@ -303,6 +350,9 @@ export type BookUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   author?: Prisma.StringFieldUpdateOperationsInput | string
+  categories?: Prisma.BookUpdatecategoriesInput | string[]
+  publishedDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -313,16 +363,30 @@ export type BookUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   author?: Prisma.StringFieldUpdateOperationsInput | string
+  categories?: Prisma.BookUpdatecategoriesInput | string[]
+  publishedDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type StringNullableListFilter<$PrismaModel = never> = {
+  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
+  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
+  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
+}
+
 export type BookCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   author?: Prisma.SortOrder
+  categories?: Prisma.SortOrder
+  publishedDate?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   coverUrl?: Prisma.SortOrder
   fileKey?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -333,6 +397,8 @@ export type BookMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   author?: Prisma.SortOrder
+  publishedDate?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   coverUrl?: Prisma.SortOrder
   fileKey?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -343,10 +409,21 @@ export type BookMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   author?: Prisma.SortOrder
+  publishedDate?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   coverUrl?: Prisma.SortOrder
   fileKey?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type BookCreatecategoriesInput = {
+  set: string[]
+}
+
+export type BookUpdatecategoriesInput = {
+  set?: string[]
+  push?: string | string[]
 }
 
 export type NullableStringFieldUpdateOperationsInput = {
@@ -359,6 +436,9 @@ export type BookSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   id?: boolean
   title?: boolean
   author?: boolean
+  categories?: boolean
+  publishedDate?: boolean
+  description?: boolean
   coverUrl?: boolean
   fileKey?: boolean
   createdAt?: boolean
@@ -369,6 +449,9 @@ export type BookSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   id?: boolean
   title?: boolean
   author?: boolean
+  categories?: boolean
+  publishedDate?: boolean
+  description?: boolean
   coverUrl?: boolean
   fileKey?: boolean
   createdAt?: boolean
@@ -379,6 +462,9 @@ export type BookSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   id?: boolean
   title?: boolean
   author?: boolean
+  categories?: boolean
+  publishedDate?: boolean
+  description?: boolean
   coverUrl?: boolean
   fileKey?: boolean
   createdAt?: boolean
@@ -389,13 +475,16 @@ export type BookSelectScalar = {
   id?: boolean
   title?: boolean
   author?: boolean
+  categories?: boolean
+  publishedDate?: boolean
+  description?: boolean
   coverUrl?: boolean
   fileKey?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type BookOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "author" | "coverUrl" | "fileKey" | "createdAt" | "updatedAt", ExtArgs["result"]["book"]>
+export type BookOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "author" | "categories" | "publishedDate" | "description" | "coverUrl" | "fileKey" | "createdAt" | "updatedAt", ExtArgs["result"]["book"]>
 
 export type $BookPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Book"
@@ -404,7 +493,22 @@ export type $BookPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     id: string
     title: string
     author: string
+    /**
+     * EPUB dc:subject values, e.g. ["Fiction", "Sea stories"]
+     */
+    categories: string[]
+    /**
+     * EPUB dc:date as written in the file (formats vary: "1851", "1851-10-18")
+     */
+    publishedDate: string | null
+    description: string | null
+    /**
+     * Object-storage key ("covers/x.jpg") or an absolute URL
+     */
     coverUrl: string | null
+    /**
+     * Object-storage key of the original EPUB ("epubs/x.epub")
+     */
     fileKey: string | null
     createdAt: Date
     updatedAt: Date
@@ -834,6 +938,9 @@ export interface BookFieldRefs {
   readonly id: Prisma.FieldRef<"Book", 'String'>
   readonly title: Prisma.FieldRef<"Book", 'String'>
   readonly author: Prisma.FieldRef<"Book", 'String'>
+  readonly categories: Prisma.FieldRef<"Book", 'String[]'>
+  readonly publishedDate: Prisma.FieldRef<"Book", 'String'>
+  readonly description: Prisma.FieldRef<"Book", 'String'>
   readonly coverUrl: Prisma.FieldRef<"Book", 'String'>
   readonly fileKey: Prisma.FieldRef<"Book", 'String'>
   readonly createdAt: Prisma.FieldRef<"Book", 'DateTime'>

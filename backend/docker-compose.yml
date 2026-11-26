@@ -47,6 +47,8 @@ services:
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/app
       - JWT_SECRET=dev-only-change-me
       - JWT_EXPIRES_IN=7d
+      # Comma-separated emails that become admins when they register
+      - ADMIN_EMAILS=${ADMIN_EMAILS:-admin@libre.local}
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-lgtm:4318
       - OTEL_SERVICE_NAME=auth
     volumes:
