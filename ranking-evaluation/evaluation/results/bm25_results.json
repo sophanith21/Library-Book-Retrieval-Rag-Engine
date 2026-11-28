@@ -1,0 +1,2147 @@
+{
+  "q1": {
+    "query": "A character who gets lost while exploring a forest",
+    "response": {
+      "query": "A character who gets lost while exploring a forest",
+      "terms": [
+        "charact",
+        "get",
+        "lost",
+        "explor",
+        "forest"
+      ],
+      "total": 94,
+      "limit": 5,
+      "offset": 0,
+      "tookMs": 602,
+      "results": [
+        {
+          "bookId": "book-a-a-milne-the-house-at-pooh-corner",
+          "title": "The House at Pooh Corner",
+          "author": "A. A. Milne",
+          "score": 14.637659072875977,
+          "matchedTerms": 3,
+          "chapterNo": 10,
+          "chunkNo": 16,
+          "snippet": {
+            "text": "…we know the Forest so well, or we might get lost,” said Rabbit half an hour later, and he gave the careless laugh which you give when you know the Forest so well that you can’t get lost. Piglet sidled up to Pooh from…",
+            "highlights": [
+              {
+                "start": 13,
+                "end": 19
+              },
+              {
+                "start": 41,
+                "end": 44
+              },
+              {
+                "start": 45,
+                "end": 49
+              },
+              {
+                "start": 148,
+                "end": 154
+              },
+              {
+                "start": 178,
+                "end": 181
+              },
+              {
+                "start": 182,
+                "end": 186
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-alexandre-dumas-the-wolf-leader-alfred-allinson",
+          "title": "The Wolf-Leader",
+          "author": "Alexandre Dumas",
+          "score": 13.85004997253418,
+          "matchedTerms": 2,
+          "chapterNo": 14,
+          "chunkNo": 8,
+          "snippet": {
+            "text": "…the forest-land which belonged to his most serene Highness the Duke of Orleans. This was why he had got up in such good time. It had snowed for two hours before daybreak; and he now went and explored the forest in all…",
+            "highlights": [
+              {
+                "start": 5,
+                "end": 11
+              },
+              {
+                "start": 192,
+                "end": 200
+              },
+              {
+                "start": 205,
+                "end": 211
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-agatha-christie-giants-bread",
+          "title": "Giant’s Bread",
+          "author": "Agatha Christie",
+          "score": 12.835714340209961,
+          "matchedTerms": 3,
+          "chapterNo": 19,
+          "chunkNo": 10,
+          "snippet": {
+            "text": "…hat and a pipe, and they go out together through the forest, and just as the sun rises on the edge of the forest, he looks at her and remembers. He says, ‘Why, a hundred years ago I left my palace and my throne for love…",
+            "highlights": [
+              {
+                "start": 54,
+                "end": 60
+              },
+              {
+                "start": 107,
+                "end": 113
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-adam-mickiewicz-pan-tadeusz-maude-ashurst-biggs",
+          "title": "Pan Tadeusz",
+          "author": "Adam Mickiewicz",
+          "score": 12.808563232421875,
+          "matchedTerms": 2,
+          "chapterNo": 8,
+          "chunkNo": 38,
+          "snippet": {
+            "text": "…steps, Towards the great forest, which, as far as eye Could follow, blackened all the horizon’s verge. Who the abysmal regions has explored Of the Litvanian forests, to the very Centre, the inner kernel of the…",
+            "highlights": [
+              {
+                "start": 26,
+                "end": 32
+              },
+              {
+                "start": 132,
+                "end": 140
+              },
+              {
+                "start": 158,
+                "end": 165
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-agatha-christie-partners-in-crime",
+          "title": "Partners in Crime",
+          "author": "Agatha Christie",
+          "score": 11.676556587219238,
+          "matchedTerms": 2,
+          "chapterNo": 8,
+          "chunkNo": 14,
+          "snippet": {
+            "text": "…Holmes,” she observed, “I’ll get you a nice little syringe and a bottle labelled Cocaine, but for God’s sake leave that violin alone. If that nice explorer man hadn’t been as simple as a child, he’d have seen through…",
+            "highlights": [
+              {
+                "start": 30,
+                "end": 33
+              },
+              {
+                "start": 148,
+                "end": 156
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "q2": {
+    "query": "Christopher Robin spending time with his animal friends",
+    "response": {
+      "query": "Christopher Robin spending time with his animal friends",
+      "terms": [
+        "christoph",
+        "robin",
+        "spend",
+        "time",
+        "anim",
+        "friend"
+      ],
+      "total": 94,
+      "limit": 5,
+      "offset": 0,
+      "tookMs": 774,
+      "results": [
+        {
+          "bookId": "book-a-a-milne-winnie-the-pooh",
+          "title": "Winnie-the-Pooh",
+          "author": "A. A. Milne",
+          "score": 24.557621002197266,
+          "matchedTerms": 4,
+          "chapterNo": 5,
+          "chunkNo": 12,
+          "snippet": {
+            "text": "…Robin said, “ Now! ” So he took hold of Pooh’s front paws and Rabbit took hold of Christopher Robin, and all Rabbit’s friends and relations took hold of Rabbit, and they all pulled together.﻿ ﻿… And for a long time…",
+            "highlights": [
+              {
+                "start": 1,
+                "end": 6
+              },
+              {
+                "start": 83,
+                "end": 94
+              },
+              {
+                "start": 95,
+                "end": 100
+              },
+              {
+                "start": 119,
+                "end": 126
+              },
+              {
+                "start": 211,
+                "end": 215
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-a-a-milne-the-house-at-pooh-corner",
+          "title": "The House at Pooh Corner",
+          "author": "A. A. Milne",
+          "score": 23.7921142578125,
+          "matchedTerms": 3,
+          "chapterNo": 8,
+          "chunkNo": 23,
+          "snippet": {
+            "text": "…notice on Christopher Robin’s door said: Gone out Back soon C. R. Which is why all the animals in the Forest﻿—except, of course, the Spotted and Herbaceous Backson﻿—now know what Christopher Robin does in the mornings.",
+            "highlights": [
+              {
+                "start": 11,
+                "end": 22
+              },
+              {
+                "start": 23,
+                "end": 30
+              },
+              {
+                "start": 88,
+                "end": 95
+              },
+              {
+                "start": 180,
+                "end": 191
+              },
+              {
+                "start": 192,
+                "end": 197
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-the-american-senator",
+          "title": "The American Senator",
+          "author": "Anthony Trollope",
+          "score": 15.123041152954102,
+          "matchedTerms": 4,
+          "chapterNo": 30,
+          "chunkNo": 13,
+          "snippet": {
+            "text": "…his time. August he spends in Scotland, also shooting other animals. During the other months he fishes, and plays cricket and tennis, and attends races, and goes about to parties in London. His evenings he spends at a…",
+            "highlights": [
+              {
+                "start": 5,
+                "end": 9
+              },
+              {
+                "start": 21,
+                "end": 27
+              },
+              {
+                "start": 61,
+                "end": 68
+              },
+              {
+                "start": 207,
+                "end": 213
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-alexandre-dumas-the-vicomte-de-bragelon-64a5c2b7",
+          "title": "The Vicomte de Bragelonne",
+          "author": "Alexandre Dumas",
+          "score": 13.16250991821289,
+          "matchedTerms": 4,
+          "chapterNo": 41,
+          "chunkNo": 5,
+          "snippet": {
+            "text": "…the time when I shall have acquired the habit of being rich, I know myself, and I shall be an insupportable animal. Now, I am not enough of a fool to wish to appear to have lost my wits before a friend like you,…",
+            "highlights": [
+              {
+                "start": 5,
+                "end": 9
+              },
+              {
+                "start": 109,
+                "end": 115
+              },
+              {
+                "start": 196,
+                "end": 202
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-a-e-w-mason-the-prisoner-in-the-opal",
+          "title": "The Prisoner in the Opal",
+          "author": "A. E. W. Mason",
+          "score": 11.923774719238281,
+          "matchedTerms": 2,
+          "chapterNo": 29,
+          "chunkNo": 30,
+          "snippet": {
+            "text": "…the Adonis; cries, uttered low like the whimperings of an animal, broke continually from her lips. Robin Webster took the chalice and raised it above his head, and then placed it between her breasts and bent over her,…",
+            "highlights": [
+              {
+                "start": 59,
+                "end": 65
+              },
+              {
+                "start": 100,
+                "end": 105
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "q3": {
+    "query": "Friends helping each other overcome difficult situations",
+    "response": {
+      "query": "Friends helping each other overcome difficult situations",
+      "terms": [
+        "friend",
+        "help",
+        "overcom",
+        "difficult",
+        "situat"
+      ],
+      "total": 94,
+      "limit": 5,
+      "offset": 0,
+      "tookMs": 321,
+      "results": [
+        {
+          "bookId": "book-anna-katharine-green-that-affair-next-door",
+          "title": "That Affair Next Door",
+          "author": "Anna Katharine Green",
+          "score": 13.25509262084961,
+          "matchedTerms": 3,
+          "chapterNo": 42,
+          "chunkNo": 52,
+          "snippet": {
+            "text": "…terrors of the situation came to me in full force, and I began to think of her as well as of myself, and longed for courage to approach her or even the daring to call out for help. But the thought that it was my…",
+            "highlights": [
+              {
+                "start": 16,
+                "end": 25
+              },
+              {
+                "start": 176,
+                "end": 180
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-alexandre-dumas-the-vicomte-de-bragelon-64a5c2b7",
+          "title": "The Vicomte de Bragelonne",
+          "author": "Alexandre Dumas",
+          "score": 12.788251876831055,
+          "matchedTerms": 3,
+          "chapterNo": 229,
+          "chunkNo": 41,
+          "snippet": {
+            "text": "…of my situation?” “I do not know.” “However, unless you have some ill feeling against me﻿—” “Your position is a difficult one.” “In what respect?” “Because you are under your own roof.” “However difficult it may be, I…",
+            "highlights": [
+              {
+                "start": 7,
+                "end": 16
+              },
+              {
+                "start": 113,
+                "end": 122
+              },
+              {
+                "start": 196,
+                "end": 205
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-alexandre-dumas-the-wolf-leader-alfred-allinson",
+          "title": "The Wolf-Leader",
+          "author": "Alexandre Dumas",
+          "score": 12.58326530456543,
+          "matchedTerms": 3,
+          "chapterNo": 15,
+          "chunkNo": 6,
+          "snippet": {
+            "text": "…house; and can it be my friend the Bailiff’s wife, I thought, who is in danger and in need of help?” “You are good indeed, my lord,” said the Bailiff quite overcome. “I trust it was nothing of the sort.” “On the…",
+            "highlights": [
+              {
+                "start": 25,
+                "end": 31
+              },
+              {
+                "start": 95,
+                "end": 99
+              },
+              {
+                "start": 157,
+                "end": 165
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-ada-elizabeth-chesterton-in-darkest-london",
+          "title": "In Darkest London",
+          "author": "Ada Elizabeth Chesterton",
+          "score": 12.41565227508545,
+          "matchedTerms": 3,
+          "chapterNo": 3,
+          "chunkNo": 30,
+          "snippet": {
+            "text": "…the little Jewess was quite helpful. She asked me what I was going to do, and I explained that I wanted a situation as a cook, but that I had no reference. “That’s a pity,” she said. “It will make it more difficult for",
+            "highlights": [
+              {
+                "start": 29,
+                "end": 36
+              },
+              {
+                "start": 107,
+                "end": 116
+              },
+              {
+                "start": 206,
+                "end": 215
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-alexander-berkman-the-bolshevik-myth",
+          "title": "The Bolshevik Myth",
+          "author": "Alexander Berkman",
+          "score": 11.924552917480469,
+          "matchedTerms": 3,
+          "chapterNo": 42,
+          "chunkNo": 6,
+          "snippet": {
+            "text": "stupendous the difficulties to be overcome. Russia was besieged on numerous fronts; there was counterrevolution within and without; the blockade was starving the country and denying even medical aid to sick women and…",
+            "highlights": [
+              {
+                "start": 34,
+                "end": 42
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "q4": {
+    "query": "A frightened animal searching for comfort and companionship",
+    "response": {
+      "query": "A frightened animal searching for comfort and companionship",
+      "terms": [
+        "frighten",
+        "anim",
+        "search",
+        "comfort",
+        "companionship"
+      ],
+      "total": 93,
+      "limit": 5,
+      "offset": 0,
+      "tookMs": 104,
+      "results": [
+        {
+          "bookId": "book-anthony-trollope-he-knew-he-was-right",
+          "title": "He Knew He Was Right",
+          "author": "Anthony Trollope",
+          "score": 12.117237091064453,
+          "matchedTerms": 2,
+          "chapterNo": 68,
+          "chunkNo": 15,
+          "snippet": {
+            "text": "…her cool brow against his own, to have the comfort of her care, and to hear the music of loving words! The companionship of his wife had once been to him everything in the world; but now, for many months past, he had…",
+            "highlights": [
+              {
+                "start": 44,
+                "end": 51
+              },
+              {
+                "start": 108,
+                "end": 121
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-a-a-milne-winnie-the-pooh",
+          "title": "Winnie-the-Pooh",
+          "author": "A. A. Milne",
+          "score": 11.962026596069336,
+          "matchedTerms": 2,
+          "chapterNo": 10,
+          "chunkNo": 5,
+          "snippet": {
+            "text": "…Animals. I am not frightened of Fierce Animals in the ordinary way, but it is well known that, if One of the Fiercer Animals is Deprived of Its Young, it becomes as fierce as Two of the Fiercer Animals. In which…",
+            "highlights": [
+              {
+                "start": 1,
+                "end": 8
+              },
+              {
+                "start": 19,
+                "end": 29
+              },
+              {
+                "start": 40,
+                "end": 47
+              },
+              {
+                "start": 118,
+                "end": 125
+              },
+              {
+                "start": 195,
+                "end": 202
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-alexandre-dumas-the-wolf-leader-alfred-allinson",
+          "title": "The Wolf-Leader",
+          "author": "Alexandre Dumas",
+          "score": 11.760712623596191,
+          "matchedTerms": 3,
+          "chapterNo": 11,
+          "chunkNo": 10,
+          "snippet": {
+            "text": "…mere proximity of the animals would have been most alarming, but, Thibault who shortly before, had been obliged to walk escorted by this terrible troop, found comfort in the thought that a wall, however thin, now…",
+            "highlights": [
+              {
+                "start": 23,
+                "end": 30
+              },
+              {
+                "start": 160,
+                "end": 167
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-berkeley-the-poisoned-chocolates-case",
+          "title": "The Poisoned Chocolates Case",
+          "author": "Anthony Berkeley",
+          "score": 11.068572998046875,
+          "matchedTerms": 2,
+          "chapterNo": 16,
+          "chunkNo": 30,
+          "snippet": {
+            "text": "…she morally drove him into the arms of his actresses, in search of a little light companionship. I’m not saying he wasn’t deeply in love with her when he married her; no doubt he was. And he’d have had a naturally…",
+            "highlights": [
+              {
+                "start": 58,
+                "end": 64
+              },
+              {
+                "start": 83,
+                "end": 96
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-the-small-house-at-allington",
+          "title": "The Small House at Allington",
+          "author": "Anthony Trollope",
+          "score": 10.97471809387207,
+          "matchedTerms": 2,
+          "chapterNo": 31,
+          "chunkNo": 4,
+          "snippet": {
+            "text": "…to appear calm, and strove almost successfully. “You have frightened me so,” said Bell. “I am frightened myself. He only sent me one line yesterday, and now he has sent nothing. If some misfortune should have happened to…",
+            "highlights": [
+              {
+                "start": 59,
+                "end": 69
+              },
+              {
+                "start": 95,
+                "end": 105
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "q5": {
+    "query": "An unexpected adventure in the woods",
+    "response": {
+      "query": "An unexpected adventure in the woods",
+      "terms": [
+        "unexpect",
+        "adventur",
+        "wood"
+      ],
+      "total": 92,
+      "limit": 5,
+      "offset": 0,
+      "tookMs": 161,
+      "results": [
+        {
+          "bookId": "book-alexandre-dumas-the-vicomte-de-bragelon-64a5c2b7",
+          "title": "The Vicomte de Bragelonne",
+          "author": "Alexandre Dumas",
+          "score": 14.136070251464844,
+          "matchedTerms": 2,
+          "chapterNo": 241,
+          "chunkNo": 23,
+          "snippet": {
+            "text": "…which they accepted. They all turned towards the entrance of the fort, and, the incident being at an end, the eight soldiers returned to their delightful leisure, for a moment disturbed by this unexpected adventure.",
+            "highlights": [
+              {
+                "start": 195,
+                "end": 205
+              },
+              {
+                "start": 206,
+                "end": 215
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-alexander-mackenzie-journals",
+          "title": "Journals",
+          "author": "Alexander Mackenzie",
+          "score": 11.149942398071289,
+          "matchedTerms": 2,
+          "chapterNo": 15,
+          "chunkNo": 20,
+          "snippet": {
+            "text": "…heard people in the woods, as if in a state of great confusion, which was occasioned, as we afterwards understood, by their discovery of us. At the same time this unexpected circumstance produced some little…",
+            "highlights": [
+              {
+                "start": 21,
+                "end": 26
+              },
+              {
+                "start": 164,
+                "end": 174
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-alain-rene-lesage-gil-blas-tobias-smollett",
+          "title": "Gil Blas",
+          "author": "Alain-René Lesage",
+          "score": 10.787220001220703,
+          "matchedTerms": 2,
+          "chapterNo": 54,
+          "chunkNo": 1,
+          "snippet": {
+            "text": "…with his company, and their adventures as they were preparing to leave the wood. When Don Raphael had finished the narrative of his adventurous life, which, with all the other qualities of a romance, had the…",
+            "highlights": [
+              {
+                "start": 29,
+                "end": 39
+              },
+              {
+                "start": 76,
+                "end": 80
+              },
+              {
+                "start": 133,
+                "end": 144
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-ann-radcliffe-the-mysteries-of-udolpho",
+          "title": "The Mysteries of Udolpho",
+          "author": "Ann Radcliffe",
+          "score": 10.189868927001953,
+          "matchedTerms": 2,
+          "chapterNo": 8,
+          "chunkNo": 34,
+          "snippet": {
+            "text": "…in the woods, but she looked round in vain for a house, or a human being, and as vainly listened for a sound to guide her. She hurried on, however, not knowing whither, avoiding the recesses of the woods, and…",
+            "highlights": [
+              {
+                "start": 8,
+                "end": 13
+              },
+              {
+                "start": 199,
+                "end": 204
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-ambrose-bierce-in-the-midst-of-life",
+          "title": "In the Midst of Life",
+          "author": "Ambrose Bierce",
+          "score": 9.449979782104492,
+          "matchedTerms": 2,
+          "chapterNo": 6,
+          "chunkNo": 4,
+          "snippet": {
+            "text": "…catching an unexpected glimpse of them, they appear farther away, and therefore larger, than they really are﻿—like objects in a fog. He is somewhat in awe of them. From the edge of the wood leading up the acclivity are…",
+            "highlights": [
+              {
+                "start": 13,
+                "end": 23
+              },
+              {
+                "start": 186,
+                "end": 190
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "q6": {
+    "query": "Friends preparing for a celebration together",
+    "response": {
+      "query": "Friends preparing for a celebration together",
+      "terms": [
+        "friend",
+        "prepar",
+        "celebr",
+        "togeth"
+      ],
+      "total": 94,
+      "limit": 5,
+      "offset": 0,
+      "tookMs": 450,
+      "results": [
+        {
+          "bookId": "book-alexandre-dumas-twenty-years-after-este-a562a0b5",
+          "title": "Twenty Years After",
+          "author": "Alexandre Dumas",
+          "score": 12.444463729858398,
+          "matchedTerms": 3,
+          "chapterNo": 80,
+          "chunkNo": 19,
+          "snippet": {
+            "text": "…four together again, we should not, I am not sure, be twenty-four hours in prison without getting free.” “My friend, since I killed Châtillon, adored of the ladies of Saint Germain, I am too great a celebrity not to fear…",
+            "highlights": [
+              {
+                "start": 6,
+                "end": 14
+              },
+              {
+                "start": 110,
+                "end": 116
+              },
+              {
+                "start": 200,
+                "end": 209
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-dr-wortles-school",
+          "title": "Dr. Wortle’s School",
+          "author": "Anthony Trollope",
+          "score": 12.021925926208496,
+          "matchedTerms": 3,
+          "chapterNo": 24,
+          "chunkNo": 11,
+          "snippet": {
+            "text": "…done in the matter, and what had been the effect of his doing. He wrote a letter, therefore, which was not, however, to be posted till after the Peacocke marriage had been celebrated, copies of which he prepared with his",
+            "highlights": [
+              {
+                "start": 173,
+                "end": 183
+              },
+              {
+                "start": 204,
+                "end": 212
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-can-you-forgive-her",
+          "title": "Can You Forgive Her?",
+          "author": "Anthony Trollope",
+          "score": 11.727486610412598,
+          "matchedTerms": 3,
+          "chapterNo": 60,
+          "chunkNo": 13,
+          "snippet": {
+            "text": "…had now gone as the Duke wished; and he was prepared to celebrate some little ovation with his young friend before he left the house in Park Lane. “And who goes out with him?” asked Mr. Palliser, putting off the…",
+            "highlights": [
+              {
+                "start": 45,
+                "end": 53
+              },
+              {
+                "start": 57,
+                "end": 66
+              },
+              {
+                "start": 102,
+                "end": 108
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-alexandre-dumas-the-vicomte-de-bragelon-64a5c2b7",
+          "title": "The Vicomte de Bragelonne",
+          "author": "Alexandre Dumas",
+          "score": 11.170217514038086,
+          "matchedTerms": 2,
+          "chapterNo": 200,
+          "chunkNo": 5,
+          "snippet": {
+            "text": "…but, it seems, to one of his friends, I have.” “It is all the same. Is his friend one of the celebrated ‘four’?” “No. It is the son of one of the celebrated ‘four,’ though.” “What have you done to the son? Come, tell…",
+            "highlights": [
+              {
+                "start": 30,
+                "end": 37
+              },
+              {
+                "start": 76,
+                "end": 82
+              },
+              {
+                "start": 94,
+                "end": 104
+              },
+              {
+                "start": 147,
+                "end": 157
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-rachel-ray",
+          "title": "Rachel Ray",
+          "author": "Anthony Trollope",
+          "score": 11.001693725585938,
+          "matchedTerms": 2,
+          "chapterNo": 6,
+          "chunkNo": 4,
+          "snippet": {
+            "text": "…was already preparing for the fight. Hence had arisen her visit at the brewery, and hence also her ready acquiescence in Mrs. Tappitt’s half-pronounced request. The party was to be celebrated on a Tuesday﻿—Tuesday week…",
+            "highlights": [
+              {
+                "start": 13,
+                "end": 22
+              },
+              {
+                "start": 182,
+                "end": 192
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "q7": {
+    "query": "A lonely character trying to make new friends",
+    "response": {
+      "query": "A lonely character trying to make new friends",
+      "terms": [
+        "lone",
+        "charact",
+        "try",
+        "make",
+        "new",
+        "friend"
+      ],
+      "total": 94,
+      "limit": 5,
+      "offset": 0,
+      "tookMs": 1266,
+      "results": [
+        {
+          "bookId": "book-agatha-christie-the-mystery-of-the-blue-train",
+          "title": "The Mystery of the Blue Train",
+          "author": "Agatha Christie",
+          "score": 15.549409866333008,
+          "matchedTerms": 5,
+          "chapterNo": 33,
+          "chunkNo": 3,
+          "snippet": {
+            "text": "…Van Aldin remains in London?” “Yes.” “I must try to see him tomorrow or the next day.” “You have news for him?” “What makes you think that?” “I﻿—wondered, that is all.” Poirot looked across at her with twinkling eyes.…",
+            "highlights": [
+              {
+                "start": 46,
+                "end": 49
+              },
+              {
+                "start": 98,
+                "end": 102
+              },
+              {
+                "start": 119,
+                "end": 124
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-framley-parsonage",
+          "title": "Framley Parsonage",
+          "author": "Anthony Trollope",
+          "score": 14.901753425598145,
+          "matchedTerms": 3,
+          "chapterNo": 40,
+          "chunkNo": 18,
+          "snippet": {
+            "text": "…—leastways, I always try to be. But, doctor, it is so lonely like.” “Lonely! not more lonely than I am.” “Oh, yes; you’re different. You can go everywheres. But what can a lone woman do? I’ll tell you what, doctor; I’d…",
+            "highlights": [
+              {
+                "start": 22,
+                "end": 25
+              },
+              {
+                "start": 55,
+                "end": 61
+              },
+              {
+                "start": 70,
+                "end": 76
+              },
+              {
+                "start": 87,
+                "end": 93
+              },
+              {
+                "start": 173,
+                "end": 177
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-ambrose-bierce-can-such-things-be",
+          "title": "Can Such Things Be?",
+          "author": "Ambrose Bierce",
+          "score": 14.214017868041992,
+          "matchedTerms": 3,
+          "chapterNo": 27,
+          "chunkNo": 1,
+          "snippet": {
+            "text": "…of lonely roads, and was compelled to rely upon the country people for hospitality. This brought him into relation with queer characters, some of whom were not altogether scrupulous in their methods of making a living,…",
+            "highlights": [
+              {
+                "start": 4,
+                "end": 10
+              },
+              {
+                "start": 127,
+                "end": 137
+              },
+              {
+                "start": 203,
+                "end": 209
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-arnold-bennett-the-old-wives-tale",
+          "title": "The Old Wives’ Tale",
+          "author": "Arnold Bennett",
+          "score": 12.787955284118652,
+          "matchedTerms": 3,
+          "chapterNo": 25,
+          "chunkNo": 84,
+          "snippet": {
+            "text": "…went to London I have been very lonely. But I try to cheer up and count my blessings. I am sure I have a great deal to be thankful for. And now this news of you! Please write to me a long letter, and tell me all about…",
+            "highlights": [
+              {
+                "start": 33,
+                "end": 39
+              },
+              {
+                "start": 47,
+                "end": 50
+              },
+              {
+                "start": 150,
+                "end": 154
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-the-prime-minister",
+          "title": "The Prime Minister",
+          "author": "Anthony Trollope",
+          "score": 12.49527359008789,
+          "matchedTerms": 4,
+          "chapterNo": 41,
+          "chunkNo": 1,
+          "snippet": {
+            "text": "…Try It” The husband was almost jovial when he came home just in time to take his young wife to dine with their father. “I’ve had such a day in the city,” he said, laughing. “I wish I could introduce you to my friend,…",
+            "highlights": [
+              {
+                "start": 1,
+                "end": 4
+              },
+              {
+                "start": 210,
+                "end": 216
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "q8": {
+    "query": "A stranger arriving and surprising the other characters",
+    "response": {
+      "query": "A stranger arriving and surprising the other characters",
+      "terms": [
+        "stranger",
+        "arriv",
+        "surpris",
+        "charact"
+      ],
+      "total": 94,
+      "limit": 5,
+      "offset": 0,
+      "tookMs": 344,
+      "results": [
+        {
+          "bookId": "book-ann-radcliffe-the-mysteries-of-udolpho",
+          "title": "The Mysteries of Udolpho",
+          "author": "Ann Radcliffe",
+          "score": 14.486347198486328,
+          "matchedTerms": 3,
+          "chapterNo": 22,
+          "chunkNo": 15,
+          "snippet": {
+            "text": "…rampart below, the men, who had so lately arrived at the castle. The sight of strangers surprised her, but still more, of strangers such as these. There was a singularity in their dress, and a certain fierceness in…",
+            "highlights": [
+              {
+                "start": 43,
+                "end": 50
+              },
+              {
+                "start": 79,
+                "end": 88
+              },
+              {
+                "start": 89,
+                "end": 98
+              },
+              {
+                "start": 123,
+                "end": 132
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-ada-elizabeth-chesterton-in-darkest-london",
+          "title": "In Darkest London",
+          "author": "Ada Elizabeth Chesterton",
+          "score": 12.023751258850098,
+          "matchedTerms": 3,
+          "chapterNo": 3,
+          "chunkNo": 14,
+          "snippet": {
+            "text": "…no questions as to character or past employment. I might have been a thief, or a drunkard﻿—it didn’t matter. I was homeless, destitute. That was enough. I appeared, a stranger out of the night, and the Salvation Army…",
+            "highlights": [
+              {
+                "start": 20,
+                "end": 29
+              },
+              {
+                "start": 168,
+                "end": 176
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-he-knew-he-was-right",
+          "title": "He Knew He Was Right",
+          "author": "Anthony Trollope",
+          "score": 11.36827564239502,
+          "matchedTerms": 3,
+          "chapterNo": 46,
+          "chunkNo": 23,
+          "snippet": {
+            "text": "ever before saw written. I have been surprised from the first at your gross cruelty to your unoffending wife; but even that seems to me more intelligible than your conduct in writing such words as those which you have…",
+            "highlights": [
+              {
+                "start": 37,
+                "end": 46
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-alexandre-dumas-the-vicomte-de-bragelon-64a5c2b7",
+          "title": "The Vicomte de Bragelonne",
+          "author": "Alexandre Dumas",
+          "score": 11.02444839477539,
+          "matchedTerms": 3,
+          "chapterNo": 112,
+          "chunkNo": 15,
+          "snippet": {
+            "text": "…on your arrival, follow the chevalier’s advice, if you like; and, what is more, you can sleep there as long and as tranquilly as you please.” “What! set off!” exclaimed the chevalier, feigning surprise; “why should de…",
+            "highlights": [
+              {
+                "start": 9,
+                "end": 16
+              },
+              {
+                "start": 194,
+                "end": 202
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-alexander-berkman-the-bolshevik-myth",
+          "title": "The Bolshevik Myth",
+          "author": "Alexander Berkman",
+          "score": 10.917226791381836,
+          "matchedTerms": 3,
+          "chapterNo": 34,
+          "chunkNo": 23,
+          "snippet": {
+            "text": "has not yet arrived, and I find myself a stranger in the place. I notice nervous glances in my direction; the men near me regard me with frank suspicion. One by one they leave their seats; I see them gathering in a…",
+            "highlights": [
+              {
+                "start": 12,
+                "end": 19
+              },
+              {
+                "start": 41,
+                "end": 49
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "q9": {
+    "query": "Animals cooperating to solve a common problem",
+    "response": {
+      "query": "Animals cooperating to solve a common problem",
+      "terms": [
+        "anim",
+        "cooper",
+        "solv",
+        "common",
+        "problem"
+      ],
+      "total": 94,
+      "limit": 5,
+      "offset": 0,
+      "tookMs": 166,
+      "results": [
+        {
+          "bookId": "book-agatha-christie-the-murder-of-roger-ackroyd",
+          "title": "The Murder of Roger Ackroyd",
+          "author": "Agatha Christie",
+          "score": 16.225460052490234,
+          "matchedTerms": 3,
+          "chapterNo": 25,
+          "chunkNo": 18,
+          "snippet": {
+            "text": "…he met just by the gate. At first glance it would seem that our problem was solved, and that the stranger went to the summerhouse to meet Ursula Bourne. It was fairly certain that he did go to the summerhouse because…",
+            "highlights": [
+              {
+                "start": 65,
+                "end": 72
+              },
+              {
+                "start": 77,
+                "end": 83
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-ada-elizabeth-chesterton-in-darkest-london",
+          "title": "In Darkest London",
+          "author": "Ada Elizabeth Chesterton",
+          "score": 14.188257217407227,
+          "matchedTerms": 2,
+          "chapterNo": 17,
+          "chunkNo": 6,
+          "snippet": {
+            "text": "…will be seen that there are present two distinct problems, one of which is in a fair way of being solved﻿—the problem of the woman whose income, earned, or received as a pension, is too small to allow her to start a…",
+            "highlights": [
+              {
+                "start": 50,
+                "end": 58
+              },
+              {
+                "start": 99,
+                "end": 105
+              },
+              {
+                "start": 111,
+                "end": 118
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-a-w-tozer-the-pursuit-of-god",
+          "title": "The Pursuit of God",
+          "author": "A. W. Tozer",
+          "score": 14.188257217407227,
+          "matchedTerms": 2,
+          "chapterNo": 12,
+          "chunkNo": 10,
+          "snippet": {
+            "text": "…join to say continually “Be thou exalted,” and a thousand minor problems will be solved at once. His Christian life ceases to be the complicated thing it had been before and becomes the very essence of simplicity. By…",
+            "highlights": [
+              {
+                "start": 65,
+                "end": 73
+              },
+              {
+                "start": 82,
+                "end": 88
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anna-katharine-green-hand-and-ring",
+          "title": "Hand and Ring",
+          "author": "Anna Katharine Green",
+          "score": 14.06904411315918,
+          "matchedTerms": 2,
+          "chapterNo": 41,
+          "chunkNo": 44,
+          "snippet": {
+            "text": "…shall, not while I live.’ Yet Imogene Dare was not there. Let us solve that problem.” “You think you can?” “I think I must.” “How? how?” The detective did not answer. He was buried in profound thought. Suddenly he…",
+            "highlights": [
+              {
+                "start": 66,
+                "end": 71
+              },
+              {
+                "start": 77,
+                "end": 84
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-aldous-huxley-point-counter-point",
+          "title": "Point Counter Point",
+          "author": "Aldous Huxley",
+          "score": 13.713581085205078,
+          "matchedTerms": 2,
+          "chapterNo": 24,
+          "chunkNo": 14,
+          "snippet": {
+            "text": "…are at present.” “So the problem will solve itself,” said Philip. “Only by destroying itself. When humanity’s destroyed, obviously there’ll be no more problem. But it seems a poor sort of solution. I believe there…",
+            "highlights": [
+              {
+                "start": 26,
+                "end": 33
+              },
+              {
+                "start": 39,
+                "end": 44
+              },
+              {
+                "start": 152,
+                "end": 159
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "q10": {
+    "query": "A misunderstanding that causes trouble between friends",
+    "response": {
+      "query": "A misunderstanding that causes trouble between friends",
+      "terms": [
+        "misunderstand",
+        "caus",
+        "troubl",
+        "friend"
+      ],
+      "total": 94,
+      "limit": 5,
+      "offset": 0,
+      "tookMs": 384,
+      "results": [
+        {
+          "bookId": "book-anthony-trollope-phineas-redux",
+          "title": "Phineas Redux",
+          "author": "Anthony Trollope",
+          "score": 13.047869682312012,
+          "matchedTerms": 2,
+          "chapterNo": 43,
+          "chunkNo": 9,
+          "snippet": {
+            "text": "…trouble you since you saw your father why have you not written and told me? Is your trouble about me?” “Well, of course it is, in a sort of way.” “I will not be a trouble to you.” “Now you are going to misunderstand me!…",
+            "highlights": [
+              {
+                "start": 1,
+                "end": 8
+              },
+              {
+                "start": 85,
+                "end": 92
+              },
+              {
+                "start": 164,
+                "end": 171
+              },
+              {
+                "start": 203,
+                "end": 216
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-the-last-chronicle-of-barset",
+          "title": "The Last Chronicle of Barset",
+          "author": "Anthony Trollope",
+          "score": 12.476349830627441,
+          "matchedTerms": 2,
+          "chapterNo": 72,
+          "chunkNo": 25,
+          "snippet": {
+            "text": "…major was leaving Cosby Lodge because of some misunderstanding with his father. The exact nature of the misunderstanding he did not know, even though he was Mr. Walker, but had little doubt that it referred in some way…",
+            "highlights": [
+              {
+                "start": 47,
+                "end": 63
+              },
+              {
+                "start": 105,
+                "end": 121
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-the-small-house-at-allington",
+          "title": "The Small House at Allington",
+          "author": "Anthony Trollope",
+          "score": 11.964594841003418,
+          "matchedTerms": 2,
+          "chapterNo": 40,
+          "chunkNo": 21,
+          "snippet": {
+            "text": "…my friend; but I hate such friendship as that.” “I think you misunderstand me, Bell. I mean that it would have been an excellent marriage, provided you had both loved each other.” “No, I don’t misunderstand you. Of…",
+            "highlights": [
+              {
+                "start": 4,
+                "end": 10
+              },
+              {
+                "start": 62,
+                "end": 75
+              },
+              {
+                "start": 194,
+                "end": 207
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-the-prime-minister",
+          "title": "The Prime Minister",
+          "author": "Anthony Trollope",
+          "score": 11.111332893371582,
+          "matchedTerms": 2,
+          "chapterNo": 35,
+          "chunkNo": 31,
+          "snippet": {
+            "text": "…the best, no doubt. It may be, sir, there was a little misunderstanding;﻿—a little misunderstanding at the Castle, sir.” Then Mr. Sprugeon retired, and Lopez understood that he was to see nothing more of the…",
+            "highlights": [
+              {
+                "start": 56,
+                "end": 72
+              },
+              {
+                "start": 84,
+                "end": 100
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-doctor-thorne",
+          "title": "Doctor Thorne",
+          "author": "Anthony Trollope",
+          "score": 10.636178016662598,
+          "matchedTerms": 3,
+          "chapterNo": 25,
+          "chunkNo": 7,
+          "snippet": {
+            "text": "…cause to fear, great cause for fear; he was sorry to say, very great cause for much fear.” Dr. Thorne promised to stay the night there, and, if possible, the following night also; and then Lady Scatcherd became troubled…",
+            "highlights": [
+              {
+                "start": 1,
+                "end": 6
+              },
+              {
+                "start": 22,
+                "end": 27
+              },
+              {
+                "start": 70,
+                "end": 75
+              },
+              {
+                "start": 212,
+                "end": 220
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "q11": {
+    "query": "A young boy learning from his adventures with animals",
+    "response": {
+      "query": "A young boy learning from his adventures with animals",
+      "terms": [
+        "young",
+        "boi",
+        "learn",
+        "adventur",
+        "anim"
+      ],
+      "total": 94,
+      "limit": 5,
+      "offset": 0,
+      "tookMs": 721,
+      "results": [
+        {
+          "bookId": "book-anonymous-the-life-of-lazarillo-de-torm-e8ef6da5",
+          "title": "The Life of Lazarillo de Tormes",
+          "author": "Anonymous",
+          "score": 12.646804809570312,
+          "matchedTerms": 3,
+          "chapterNo": 2,
+          "chunkNo": 19,
+          "snippet": {
+            "text": "…his adventures; and secondly, to satirise certain types of men, the products of the age in which he wrote, through the medium of his boy hero. The author himself was a boy at the time, or at least a very young man, a…",
+            "highlights": [
+              {
+                "start": 5,
+                "end": 15
+              },
+              {
+                "start": 134,
+                "end": 137
+              },
+              {
+                "start": 169,
+                "end": 172
+              },
+              {
+                "start": 205,
+                "end": 210
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-apuleius-the-golden-ass-william-adlington",
+          "title": "The Golden Ass",
+          "author": "Apuleius",
+          "score": 12.21896743774414,
+          "matchedTerms": 3,
+          "chapterNo": 37,
+          "chunkNo": 1,
+          "snippet": {
+            "text": "…and by evil adventure: and to the end you may learn and know all the whole matter, I purpose to tell you the circumstances of every point, whereby such as are more learned then I (to whom fortune hath ministered…",
+            "highlights": [
+              {
+                "start": 13,
+                "end": 22
+              },
+              {
+                "start": 47,
+                "end": 52
+              },
+              {
+                "start": 165,
+                "end": 172
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-andre-gide-the-counterfeiters-dorothy-bussy",
+          "title": "The Counterfeiters",
+          "author": "André Gide",
+          "score": 11.675859451293945,
+          "matchedTerms": 3,
+          "chapterNo": 41,
+          "chunkNo": 11,
+          "snippet": {
+            "text": "…embarrassment. Your young nephew has already been mixed up in a most compromising manner in a﻿ ﻿… this is quite between ourselves, I beg﻿ ﻿… in a somewhat scandalous adventure. I am willing to believe, considering his…",
+            "highlights": [
+              {
+                "start": 21,
+                "end": 26
+              },
+              {
+                "start": 167,
+                "end": 176
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-ambrose-bierce-in-the-midst-of-life",
+          "title": "In the Midst of Life",
+          "author": "Ambrose Bierce",
+          "score": 11.169242858886719,
+          "matchedTerms": 2,
+          "chapterNo": 25,
+          "chunkNo": 16,
+          "snippet": {
+            "text": "…which the boy had fled the preceding night. The men were in high spirits; they talked very loudly and laughed. They made facetious and good-humored ironical remarks to the boy about his adventure, which evidently they…",
+            "highlights": [
+              {
+                "start": 11,
+                "end": 14
+              },
+              {
+                "start": 173,
+                "end": 176
+              },
+              {
+                "start": 187,
+                "end": 196
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-short-fiction",
+          "title": "Short Fiction",
+          "author": "Anthony Trollope",
+          "score": 11.016691207885742,
+          "matchedTerms": 3,
+          "chapterNo": 23,
+          "chunkNo": 16,
+          "snippet": {
+            "text": "…easier to the animal the track of that rugged way? And now, when she saw big farmers’ lads coming down with other donkeys﻿—and, indeed, there was one who came with a pony; no boy, but a young man, old enough to know…",
+            "highlights": [
+              {
+                "start": 15,
+                "end": 21
+              },
+              {
+                "start": 176,
+                "end": 179
+              },
+              {
+                "start": 187,
+                "end": 192
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "q12": {
+    "query": "Friends searching for someone who has gone missing",
+    "response": {
+      "query": "Friends searching for someone who has gone missing",
+      "terms": [
+        "friend",
+        "search",
+        "someon",
+        "gone",
+        "miss"
+      ],
+      "total": 94,
+      "limit": 5,
+      "offset": 0,
+      "tookMs": 550,
+      "results": [
+        {
+          "bookId": "book-alexandre-dumas-twenty-years-after-este-a562a0b5",
+          "title": "Twenty Years After",
+          "author": "Alexandre Dumas",
+          "score": 13.467071533203125,
+          "matchedTerms": 3,
+          "chapterNo": 5,
+          "chunkNo": 12,
+          "snippet": {
+            "text": "…still time to repair the evil? Search among your friends, your oldest friends.” “What do you mean, Monsieur?” “Nothing else than I say﻿—search.” “Alas, I look around me in vain! I have no influence with anyone.…",
+            "highlights": [
+              {
+                "start": 32,
+                "end": 38
+              },
+              {
+                "start": 50,
+                "end": 57
+              },
+              {
+                "start": 71,
+                "end": 78
+              },
+              {
+                "start": 137,
+                "end": 143
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anna-katharine-green-that-affair-next-door",
+          "title": "That Affair Next Door",
+          "author": "Anna Katharine Green",
+          "score": 12.894253730773926,
+          "matchedTerms": 3,
+          "chapterNo": 27,
+          "chunkNo": 12,
+          "snippet": {
+            "text": "…His answer showed a strange mixture of hesitation and bravado. “Not much, ma’am; only Miss Althorpe is afraid you may not be pleased. Miss Oliver is gone, ma’am; she ran away while Crescenze was out of the room.”",
+            "highlights": [
+              {
+                "start": 87,
+                "end": 91
+              },
+              {
+                "start": 135,
+                "end": 139
+              },
+              {
+                "start": 150,
+                "end": 154
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-ambrose-bierce-can-such-things-be",
+          "title": "Can Such Things Be?",
+          "author": "Ambrose Bierce",
+          "score": 12.4619140625,
+          "matchedTerms": 3,
+          "chapterNo": 5,
+          "chunkNo": 3,
+          "snippet": {
+            "text": "…instantly disappeared among the trees of the lawn. A hasty pursuit and brief search of the grounds in the belief that the trespasser was someone secretly visiting a servant proving fruitless, he entered at the unlocked",
+            "highlights": [
+              {
+                "start": 78,
+                "end": 84
+              },
+              {
+                "start": 138,
+                "end": 145
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-the-vicar-of-bullhampton",
+          "title": "The Vicar of Bullhampton",
+          "author": "Anthony Trollope",
+          "score": 11.893905639648438,
+          "matchedTerms": 3,
+          "chapterNo": 18,
+          "chunkNo": 1,
+          "snippet": {
+            "text": "XVI: Miss Lowther Asks for Advice XVI Miss Lowther Asks for Advice All these searchings for the murderers of Mr. Trumbull, and these remandings of Sam Brattle, took place in the month of September, and during that same…",
+            "highlights": [
+              {
+                "start": 5,
+                "end": 9
+              },
+              {
+                "start": 38,
+                "end": 42
+              },
+              {
+                "start": 77,
+                "end": 87
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-short-fiction",
+          "title": "Short Fiction",
+          "author": "Anthony Trollope",
+          "score": 11.756132125854492,
+          "matchedTerms": 3,
+          "chapterNo": 37,
+          "chunkNo": 55,
+          "snippet": {
+            "text": "…propitiate her husband. So she told her story. She had gone forth, as he had bade her, in search of the mustard, and then had suddenly lost her way. Up and down the house she had wandered, perhaps nearly a dozen…",
+            "highlights": [
+              {
+                "start": 56,
+                "end": 60
+              },
+              {
+                "start": 91,
+                "end": 97
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "q13": {
+    "query": "A group exploring an unfamiliar place together",
+    "response": {
+      "query": "A group exploring an unfamiliar place together",
+      "terms": [
+        "group",
+        "explor",
+        "unfamiliar",
+        "place",
+        "togeth"
+      ],
+      "total": 94,
+      "limit": 5,
+      "offset": 0,
+      "tookMs": 275,
+      "results": [
+        {
+          "bookId": "book-ambrose-bierce-can-such-things-be",
+          "title": "Can Such Things Be?",
+          "author": "Ambrose Bierce",
+          "score": 13.530006408691406,
+          "matchedTerms": 2,
+          "chapterNo": 13,
+          "chunkNo": 3,
+          "snippet": {
+            "text": "group of horsemen riding to the north. Behind them were men afoot, marching in column, with dimly gleaming rifles aslant above their shoulders. They moved slowly and in silence. Another group of horsemen, another…",
+            "highlights": [
+              {
+                "start": 0,
+                "end": 5
+              },
+              {
+                "start": 186,
+                "end": 191
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-ambrose-bierce-in-the-midst-of-life",
+          "title": "In the Midst of Life",
+          "author": "Ambrose Bierce",
+          "score": 12.715652465820312,
+          "matchedTerms": 2,
+          "chapterNo": 17,
+          "chunkNo": 4,
+          "snippet": {
+            "text": "…he saw nothing in detail, but only groups of things, whose shapes, not observed when there was something more of them to observe, were now unfamiliar. They seemed not to have been there before. A landscape that is all…",
+            "highlights": [
+              {
+                "start": 36,
+                "end": 42
+              },
+              {
+                "start": 140,
+                "end": 150
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-alexandre-dumas-twenty-years-after-este-a562a0b5",
+          "title": "Twenty Years After",
+          "author": "Alexandre Dumas",
+          "score": 11.920978546142578,
+          "matchedTerms": 2,
+          "chapterNo": 86,
+          "chunkNo": 2,
+          "snippet": {
+            "text": "…Exploring, however, one of the side wings of the gallery, after making a sign to Porthos to explore the other, he saw, all at once, at his left, a tub containing an orange tree, which had been pushed out of its place…",
+            "highlights": [
+              {
+                "start": 1,
+                "end": 10
+              },
+              {
+                "start": 93,
+                "end": 100
+              },
+              {
+                "start": 212,
+                "end": 217
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-andre-norton-storm-over-warlock",
+          "title": "Storm Over Warlock",
+          "author": "Andre Norton",
+          "score": 10.817779541015625,
+          "matchedTerms": 2,
+          "chapterNo": 2,
+          "chunkNo": 25,
+          "snippet": {
+            "text": "…the site was too close to the Throgs. Let one of their exploring flyers sight them, and the little group was finished. Better cover, that’s what the three fugitives must have. Shann scowled, not at Togi, but at the…",
+            "highlights": [
+              {
+                "start": 56,
+                "end": 65
+              },
+              {
+                "start": 100,
+                "end": 105
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-alexandre-dumas-the-vicomte-de-bragelon-64a5c2b7",
+          "title": "The Vicomte de Bragelonne",
+          "author": "Alexandre Dumas",
+          "score": 10.725364685058594,
+          "matchedTerms": 3,
+          "chapterNo": 92,
+          "chunkNo": 11,
+          "snippet": {
+            "text": "…conversing together. It is true they were talking in tones so low, that the sound of their words could hardly be heard in the vast apartment. To speak in that manner from any particular place without bending down, or…",
+            "highlights": [
+              {
+                "start": 12,
+                "end": 20
+              },
+              {
+                "start": 187,
+                "end": 192
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "q14": {
+    "query": "A character facing a frightening situation with support from friends",
+    "response": {
+      "query": "A character facing a frightening situation with support from friends",
+      "terms": [
+        "charact",
+        "face",
+        "frighten",
+        "situat",
+        "support",
+        "friend"
+      ],
+      "total": 94,
+      "limit": 5,
+      "offset": 0,
+      "tookMs": 313,
+      "results": [
+        {
+          "bookId": "book-adam-smith-the-theory-of-moral-sentiments",
+          "title": "The Theory of Moral Sentiments",
+          "author": "Adam Smith",
+          "score": 15.510929107666016,
+          "matchedTerms": 3,
+          "chapterNo": 44,
+          "chunkNo": 16,
+          "snippet": {
+            "text": "…the difference between the civil and the military character. The ordinary situation, however, of men of this profession, renders gaiety, and a degree of dissipation, so much their usual character; and custom has,",
+            "highlights": [
+              {
+                "start": 51,
+                "end": 60
+              },
+              {
+                "start": 75,
+                "end": 84
+              },
+              {
+                "start": 187,
+                "end": 196
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-adam-smith-the-wealth-of-nations",
+          "title": "The Wealth of Nations",
+          "author": "Adam Smith",
+          "score": 13.55354118347168,
+          "matchedTerms": 3,
+          "chapterNo": 22,
+          "chunkNo": 7,
+          "snippet": {
+            "text": "in which they were situated could support; till such time, at least, as the whole of that territory was completely cultivated and improved. Upon equal, or nearly equal profits, most men will choose to employ their…",
+            "highlights": [
+              {
+                "start": 19,
+                "end": 27
+              },
+              {
+                "start": 34,
+                "end": 41
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anna-katharine-green-the-leavenworth-case",
+          "title": "The Leavenworth Case",
+          "author": "Anna Katharine Green",
+          "score": 13.500457763671875,
+          "matchedTerms": 4,
+          "chapterNo": 32,
+          "chunkNo": 19,
+          "snippet": {
+            "text": "…my stand out on the common, and, in the face of the whole world, declare what I have done for Mary Leavenworth. But first,” she whispered, “tell me, for God’s sake, how those girls are situated. I have not dared to ask",
+            "highlights": [
+              {
+                "start": 41,
+                "end": 45
+              },
+              {
+                "start": 186,
+                "end": 194
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-the-claverings",
+          "title": "The Claverings",
+          "author": "Anthony Trollope",
+          "score": 13.306818008422852,
+          "matchedTerms": 4,
+          "chapterNo": 32,
+          "chunkNo": 5,
+          "snippet": {
+            "text": "…dared to look in the face any of his dearest and most intimate friends. He was not remiss in telling himself all this. He did draw the comparison ruthlessly between the character which he had intended to make his own and…",
+            "highlights": [
+              {
+                "start": 22,
+                "end": 26
+              },
+              {
+                "start": 64,
+                "end": 71
+              },
+              {
+                "start": 170,
+                "end": 179
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-a-e-w-mason-at-the-villa-rose",
+          "title": "At the Villa Rose",
+          "author": "A. E. W. Mason",
+          "score": 13.185989379882812,
+          "matchedTerms": 3,
+          "chapterNo": 11,
+          "chunkNo": 16,
+          "snippet": {
+            "text": "…Whatever you do, do not frighten her.” Hanaud sat down in the chair which he had placed for himself. “Marthe Gobin shall sit opposite, with the light upon her face. So!” And, springing up, he arranged a chair for her.…",
+            "highlights": [
+              {
+                "start": 25,
+                "end": 33
+              },
+              {
+                "start": 160,
+                "end": 164
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "q15": {
+    "query": "Friends discussing kindness, courage, and loyalty",
+    "response": {
+      "query": "Friends discussing kindness, courage, and loyalty",
+      "terms": [
+        "friend",
+        "discuss",
+        "kind",
+        "courag",
+        "loyalti"
+      ],
+      "total": 94,
+      "limit": 5,
+      "offset": 0,
+      "tookMs": 288,
+      "results": [
+        {
+          "bookId": "book-alexandre-dumas-the-vicomte-de-bragelon-64a5c2b7",
+          "title": "The Vicomte de Bragelonne",
+          "author": "Alexandre Dumas",
+          "score": 13.59200668334961,
+          "matchedTerms": 2,
+          "chapterNo": 84,
+          "chunkNo": 24,
+          "snippet": {
+            "text": "…is not his fault﻿—he is the equal of all the kings of the earth in courage and loyalty. Such is my opinion, Monsieur; and I thank heaven I have known M. d’Artagnan from my birth.” De Wardes was about to reply, when de…",
+            "highlights": [
+              {
+                "start": 68,
+                "end": 75
+              },
+              {
+                "start": 80,
+                "end": 87
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-the-prime-minister",
+          "title": "The Prime Minister",
+          "author": "Anthony Trollope",
+          "score": 12.923314094543457,
+          "matchedTerms": 2,
+          "chapterNo": 32,
+          "chunkNo": 12,
+          "snippet": {
+            "text": "…of honest, courageous truth which her father was wont to attribute to it, she regarded his theory as based upon legends, as in earlier years was the theory of the courage, and constancy, and loyalty of the knights of…",
+            "highlights": [
+              {
+                "start": 12,
+                "end": 22
+              },
+              {
+                "start": 164,
+                "end": 171
+              },
+              {
+                "start": 192,
+                "end": 199
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-agatha-christie-the-murder-of-roger-ackroyd",
+          "title": "The Murder of Roger Ackroyd",
+          "author": "Agatha Christie",
+          "score": 12.863134384155273,
+          "matchedTerms": 3,
+          "chapterNo": 14,
+          "chunkNo": 18,
+          "snippet": {
+            "text": "…said Poirot, “will you let an old man congratulate you on your courage and your loyalty? And will you not misunderstand me if I ask you﻿—ask you most solemnly﻿—to postpone the announcement you speak of for at least two…",
+            "highlights": [
+              {
+                "start": 64,
+                "end": 71
+              },
+              {
+                "start": 81,
+                "end": 88
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-a-e-w-mason-the-prisoner-in-the-opal",
+          "title": "The Prisoner in the Opal",
+          "author": "A. E. W. Mason",
+          "score": 12.014174461364746,
+          "matchedTerms": 3,
+          "chapterNo": 3,
+          "chunkNo": 27,
+          "snippet": {
+            "text": "…to be no discussion at all. His arrangement must just go through. “You are the one person indicated to put the trouble right,” he declared. “You are Diana’s friend. You know all her other friends. You can propose…",
+            "highlights": [
+              {
+                "start": 10,
+                "end": 20
+              },
+              {
+                "start": 158,
+                "end": 164
+              },
+              {
+                "start": 189,
+                "end": 196
+              }
+            ]
+          }
+        },
+        {
+          "bookId": "book-anthony-trollope-orley-farm",
+          "title": "Orley Farm",
+          "author": "Anthony Trollope",
+          "score": 11.328415870666504,
+          "matchedTerms": 2,
+          "chapterNo": 18,
+          "chunkNo": 7,
+          "snippet": {
+            "text": "an English lawyer think that loyalty to truth should come before loyalty to his client. And therefore our own pundits, though on this occasion they went to Birmingham, summoned by the greatness of the occasion, by the…",
+            "highlights": [
+              {
+                "start": 29,
+                "end": 36
+              },
+              {
+                "start": 65,
+                "end": 72
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
